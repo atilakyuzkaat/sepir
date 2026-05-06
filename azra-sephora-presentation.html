@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Azra Group × Sephora — Iran & Adjacent Markets Distribution Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg-soft: #121212;
+  --bg-card: #181818;
+  --bg-elev: #1f1f1f;
+  --ink: #f5f0e8;
+  --ink-muted: #8a8580;
+  --ink-faint: #4a4640;
+  --accent: #d4a574;
+  --accent-warm: #c89968;
+  --accent-deep: #8b6b3d;
+  --rouge: #b8252f;
+  --line: #2a2826;
+  --line-soft: #1f1d1b;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  overflow-x: hidden;
+}
+::selection { background: var(--accent); color: var(--bg); }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.5; pointer-events: none; z-index: 1000; mix-blend-mode: overlay;
+}
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  padding: 16px 32px;
+  background: rgba(10,10,10,0.88);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--line-soft);
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+}
+.nav-brand { display: flex; align-items: center; gap: 14px; flex-shrink: 0; text-decoration: none; color: var(--ink); }
+.nav-brand .azra-logo { height: 38px; width: 38px; display: block; filter: brightness(1.1) saturate(0.85); }
+.nav-brand .x-mark { font-style: italic; color: var(--accent); font-size: 22px; font-weight: 300; font-family: var(--serif); }
+.sephora-mark {
+  font-family: 'Inter', sans-serif; font-weight: 500;
+  font-size: 16px; letter-spacing: 0.42em; text-transform: uppercase;
+  color: var(--ink); position: relative; padding-top: 6px;
+}
+.sephora-mark::before {
+  content: ''; position: absolute; top: -2px; left: 50%;
+  transform: translateX(-50%); width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 7px solid var(--ink);
+}
+
+.nav-menu { display: flex; align-items: center; gap: 2px; flex-wrap: nowrap; }
+.nav-menu a {
+  color: var(--ink-muted); text-decoration: none; font-size: 12px;
+  letter-spacing: 0.06em; padding: 8px 12px; border-radius: 4px;
+  transition: all 0.25s; font-weight: 400; white-space: nowrap;
+}
+.nav-menu a:hover { color: var(--accent); background: rgba(212,165,116,0.06); }
+
+.nav-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.lang-toggle {
+  display: flex; background: var(--bg-soft); border: 1px solid var(--line);
+  border-radius: 100px; padding: 3px;
+}
+.lang-toggle button {
+  background: transparent; border: none; color: var(--ink-muted);
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.15em; padding: 7px 14px; cursor: pointer;
+  border-radius: 100px; transition: all 0.3s;
+}
+.lang-toggle button.active { background: var(--accent); color: var(--bg); }
+
+.menu-toggle {
+  display: none; background: transparent; border: 1px solid var(--line);
+  color: var(--ink); width: 38px; height: 38px;
+  border-radius: 6px; cursor: pointer; align-items: center; justify-content: center;
+}
+.menu-toggle svg { width: 18px; height: 18px; transition: transform 0.3s; }
+.menu-toggle.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.menu-toggle.active svg { transform: rotate(90deg); }
+
+[data-lang]:not(.active-lang) { display: none !important; }
+
+/* HERO */
+.hero {
+  min-height: 100vh; position: relative;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 140px 8vw 80px; overflow: hidden;
+}
+.hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.hero-bg .glow1 {
+  position: absolute; top: -20%; right: -10%;
+  width: 60vw; height: 60vw;
+  background: radial-gradient(circle, rgba(212,165,116,0.15), transparent 60%);
+  border-radius: 50%; filter: blur(60px);
+}
+.hero-bg .glow2 {
+  position: absolute; bottom: -30%; left: -10%;
+  width: 50vw; height: 50vw;
+  background: radial-gradient(circle, rgba(184,37,47,0.08), transparent 60%);
+  border-radius: 50%; filter: blur(80px);
+}
+.hero-content { position: relative; z-index: 2; max-width: 1300px; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.3em;
+  color: var(--accent); text-transform: uppercase;
+  margin-bottom: 36px; opacity: 0; animation: fadeUp 0.9s 0.2s forwards;
+}
+.eyebrow .line { width: 50px; height: 1px; background: var(--accent); }
+
+h1.hero-title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(44px, 8vw, 132px); line-height: 0.94;
+  letter-spacing: -0.02em; margin-bottom: 36px;
+  opacity: 0; animation: fadeUp 1.1s 0.4s forwards;
+}
+h1.hero-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+h1.hero-title .ampersand { font-style: italic; color: var(--accent); font-weight: 300; }
+
+.hero-tagline {
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--ink-muted); max-width: 720px;
+  line-height: 1.75; margin-bottom: 56px;
+  opacity: 0; animation: fadeUp 1.1s 0.6s forwards;
+}
+
+.hero-meta {
+  display: flex; gap: 56px; flex-wrap: wrap;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+  color: var(--ink-faint); text-transform: uppercase;
+  opacity: 0; animation: fadeUp 1.1s 0.8s forwards;
+}
+.hero-meta div { display: flex; flex-direction: column; }
+.hero-meta div span:not(:first-child) {
+  color: var(--ink); margin-top: 6px; font-size: 13px;
+  letter-spacing: 0.04em; font-family: var(--sans); text-transform: none; font-weight: 400;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* SECTIONS */
+section { padding: 130px 8vw; position: relative; scroll-margin-top: 80px; }
+section.alt { background: var(--bg-soft); }
+
+.section-head {
+  display: grid; grid-template-columns: 1fr 2.2fr;
+  gap: 72px; margin-bottom: 88px; align-items: end;
+}
+.section-num {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.3em;
+  color: var(--accent); text-transform: uppercase;
+}
+.section-num span { display: block; margin-top: 8px; color: var(--ink-muted); font-weight: 400; }
+h2.section-title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(36px, 4.8vw, 68px);
+  line-height: 1.05; letter-spacing: -0.015em;
+}
+h2.section-title em { font-style: italic; color: var(--accent); }
+
+/* AZRA SUBSIDIARIES */
+.azra-intro {
+  max-width: 840px; margin-bottom: 60px;
+  font-size: 17px; color: var(--ink-muted); line-height: 1.75;
+}
+.azra-intro strong { color: var(--ink); font-weight: 500; }
+
+.subs-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--line); border: 1px solid var(--line);
+}
+.sub {
+  background: var(--bg); padding: 36px 32px;
+  transition: all 0.4s; position: relative;
+  display: flex; flex-direction: column;
+}
+.sub:hover { background: var(--bg-card); }
+.sub.featured {
+  background: linear-gradient(180deg, rgba(212,165,116,0.08), transparent);
+}
+.sub.featured::after {
+  content: 'TRACK RECORD';
+  position: absolute; top: 16px; right: 16px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
+  color: var(--accent); padding: 4px 10px;
+  border: 1px solid var(--accent-deep); border-radius: 100px;
+}
+.sub .sub-icon {
+  width: 32px; height: 32px; margin-bottom: 24px; color: var(--accent);
+  stroke-width: 1.2;
+}
+.sub h4 {
+  font-family: var(--serif); font-size: 26px; font-weight: 400;
+  margin-bottom: 6px; letter-spacing: 0.005em;
+}
+.sub .sub-tag {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 18px;
+}
+.sub p {
+  font-size: 14px; color: var(--ink-muted); line-height: 1.7;
+  margin-bottom: 18px; flex: 1;
+}
+.sub ul {
+  list-style: none; padding: 0; margin: 0; padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.sub ul li {
+  font-size: 12.5px; color: var(--ink); padding: 5px 0; padding-left: 16px;
+  position: relative; line-height: 1.5;
+}
+.sub ul li::before {
+  content: '·'; position: absolute; left: 4px; color: var(--accent);
+  font-size: 18px; line-height: 1;
+}
+
+/* TRACK RECORD CASE STUDIES */
+.case-frame {
+  border: 1px solid var(--line); padding: 64px 56px; position: relative;
+  background: linear-gradient(135deg, rgba(212,165,116,0.04), transparent);
+  margin-top: 32px;
+}
+.case-frame::before, .case-frame::after {
+  content: ''; position: absolute; width: 32px; height: 32px; border: 1px solid var(--accent);
+}
+.case-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.case-frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.case-mark {
+  font-family: var(--serif); font-size: 14px; letter-spacing: 0.4em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 24px; font-style: italic;
+}
+.case-frame h3 {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(30px, 4vw, 52px); line-height: 1.1;
+  margin-bottom: 28px; letter-spacing: -0.01em;
+}
+.case-frame h3 em { font-style: italic; color: var(--accent); }
+.case-frame > p {
+  font-size: 16px; color: var(--ink-muted); line-height: 1.7;
+  max-width: 880px; margin-bottom: 40px;
+}
+
+.case-cards {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 24px; margin-top: 40px;
+}
+.case-card {
+  background: var(--bg-card); border: 1px solid var(--line);
+  padding: 36px 32px; border-left: 3px solid var(--accent);
+}
+.case-card .case-brand {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.25em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 16px;
+}
+.case-card h4 {
+  font-family: var(--serif); font-size: 28px; font-weight: 400;
+  margin-bottom: 16px; line-height: 1.2;
+}
+.case-card .case-role {
+  display: inline-block; padding: 6px 12px;
+  background: rgba(212,165,116,0.1); border: 1px solid var(--accent-deep);
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+  color: var(--accent); text-transform: uppercase; border-radius: 4px;
+  margin-bottom: 20px;
+}
+.case-card p {
+  font-size: 14px; color: var(--ink-muted); line-height: 1.7;
+  margin-bottom: 18px;
+}
+.case-card .case-stats {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; padding-top: 18px; border-top: 1px solid var(--line);
+}
+.case-card .case-stats div .num {
+  font-family: var(--serif); font-size: 28px; color: var(--accent);
+  line-height: 1; margin-bottom: 6px;
+}
+.case-card .case-stats div .lbl {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
+  color: var(--ink-muted); text-transform: uppercase;
+}
+
+/* OPPORTUNITY */
+.opp-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr;
+  gap: 60px; align-items: start;
+}
+.opp-text p {
+  font-size: 16px; color: var(--ink-muted);
+  margin-bottom: 22px; line-height: 1.75;
+}
+.opp-text p strong { color: var(--ink); font-weight: 500; }
+.opp-stats {
+  display: grid; grid-template-columns: 1fr; gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+}
+.opp-stat { background: var(--bg); padding: 32px; }
+.opp-stat .num {
+  font-family: var(--serif); font-size: 56px; font-weight: 300;
+  color: var(--accent); line-height: 1; margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.opp-stat .lbl {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+  color: var(--ink-muted); text-transform: uppercase; margin-bottom: 8px;
+}
+.opp-stat .desc { font-size: 13px; color: var(--ink-muted); line-height: 1.6; }
+
+/* STRATEGY */
+.strat-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+}
+.strat-card {
+  background: var(--bg); border: 1px solid var(--line);
+  padding: 36px 32px; transition: all 0.4s;
+}
+.strat-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.strat-card .strat-num {
+  font-family: var(--serif); font-size: 56px; font-style: italic;
+  color: var(--accent); line-height: 1; margin-bottom: 20px;
+  font-weight: 300;
+}
+.strat-card h4 {
+  font-family: var(--serif); font-size: 24px; font-weight: 400;
+  margin-bottom: 14px; line-height: 1.25;
+}
+.strat-card p {
+  font-size: 14px; color: var(--ink-muted); line-height: 1.7;
+}
+.strat-card .strat-tag {
+  display: inline-block; margin-top: 18px; padding: 6px 12px;
+  background: var(--bg-card); border: 1px solid var(--line);
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+  color: var(--accent); text-transform: uppercase; border-radius: 4px;
+}
+
+/* GANTT */
+.gantt-wrap { border: 1px solid var(--line); background: var(--bg); padding: 28px; overflow-x: auto; }
+.gantt-legend {
+  display: flex; gap: 22px; margin-bottom: 24px; flex-wrap: wrap;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-muted);
+}
+.gantt-legend span.swatch {
+  display: inline-block; width: 14px; height: 14px;
+  margin-right: 8px; vertical-align: middle; border-radius: 2px;
+}
+.legend-legal { background: linear-gradient(90deg, var(--rouge), #d4304a); }
+.legend-product { background: linear-gradient(90deg, var(--accent-deep), var(--accent)); }
+.legend-retail { background: linear-gradient(90deg, var(--accent), #f0c898); }
+.legend-digital { background: linear-gradient(90deg, #6b8caf, #a4c4e6); }
+.legend-team { background: linear-gradient(90deg, #5a7050, #8aa080); }
+.legend-mkt { background: linear-gradient(90deg, #9a4870, #c87090); }
+
+.gantt-inner { min-width: 1100px; }
+.gantt-row {
+  display: grid; grid-template-columns: 280px repeat(24, 1fr);
+  border-bottom: 1px solid var(--line-soft); align-items: stretch;
+  position: relative;
+}
+.gantt-row.header { background: var(--bg-soft); border-bottom: 1px solid var(--line); }
+.gantt-row .task-cell {
+  padding: 12px 14px; font-size: 12.5px; color: var(--ink);
+  display: flex; align-items: center; gap: 10px;
+  border-right: 1px solid var(--line-soft);
+}
+.gantt-row .task-cell .cat {
+  display: inline-block; width: 4px; height: 22px;
+  border-radius: 2px; flex-shrink: 0;
+}
+.gantt-row.header .task-cell {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+  color: var(--ink-faint); text-transform: uppercase; padding: 12px 14px;
+}
+.gantt-row .month-cell {
+  padding: 10px 2px; text-align: center;
+  font-family: var(--mono); font-size: 9px;
+  color: var(--ink-faint); text-transform: uppercase;
+  border-right: 1px solid var(--line-soft);
+}
+.gantt-row .month-cell.year-mark { color: var(--accent); font-weight: 500; }
+.gantt-row .month-cell.q-mark { background: rgba(212,165,116,0.05); }
+.gantt-row .bar-cell {
+  border-right: 1px solid var(--line-soft);
+  position: relative; min-height: 38px;
+}
+.bar-cell.q-mark { background: rgba(212,165,116,0.03); }
+.bar {
+  border-radius: 4px; display: flex; align-items: center; padding: 0 10px;
+  font-size: 10px; color: var(--bg); font-weight: 500;
+  letter-spacing: 0.04em; font-family: var(--mono);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  margin: 8px 1px; min-height: 22px; align-self: center;
+}
+.bar.legal { background: linear-gradient(90deg, var(--rouge), #d4304a); }
+.bar.product { background: linear-gradient(90deg, var(--accent-deep), var(--accent)); }
+.bar.retail { background: linear-gradient(90deg, var(--accent), #f0c898); }
+.bar.digital { background: linear-gradient(90deg, #6b8caf, #a4c4e6); }
+.bar.team { background: linear-gradient(90deg, #5a7050, #8aa080); }
+.bar.mkt { background: linear-gradient(90deg, #9a4870, #c87090); }
+
+.gantt-milestones {
+  display: grid; grid-template-columns: 280px repeat(24, 1fr);
+  margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line);
+  min-width: 1100px;
+}
+.gantt-milestones .ms-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+  color: var(--accent); text-transform: uppercase;
+  padding: 0 14px; align-self: center;
+}
+.ms-cell { position: relative; min-height: 36px; }
+.milestone {
+  width: 12px; height: 12px; background: var(--accent);
+  transform: rotate(45deg); border-radius: 2px;
+  position: absolute; top: 8px; left: 50%;
+  margin-left: -6px;
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--accent-deep);
+}
+.milestone-label {
+  position: absolute; top: 28px; left: 50%; transform: translateX(-50%);
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.05em;
+  color: var(--ink-muted); white-space: nowrap; text-transform: uppercase;
+}
+
+/* STORE PLAN */
+.stores-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+}
+.store-card {
+  background: var(--bg-card); border: 1px solid var(--line);
+  padding: 36px 32px; position: relative;
+}
+.store-card.year1 { border-left: 3px solid var(--accent); }
+.store-card.year2 { border-left: 3px solid var(--rouge); }
+.store-card .store-when {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.25em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+}
+.store-card h4 {
+  font-family: var(--serif); font-size: 30px; font-weight: 400;
+  margin-bottom: 8px;
+}
+.store-card .store-count {
+  font-size: 14px; color: var(--ink-muted); margin-bottom: 24px;
+}
+.store-list {
+  list-style: none; padding: 0; margin: 0;
+}
+.store-list li {
+  display: grid; grid-template-columns: 60px 1fr 70px;
+  gap: 16px; padding: 14px 0;
+  border-top: 1px solid var(--line); align-items: center;
+}
+.store-list li:first-child { border-top: none; }
+.store-list li .month {
+  font-family: var(--mono); font-size: 11px; color: var(--accent);
+  letter-spacing: 0.1em;
+}
+.store-list li .city { font-size: 14px; color: var(--ink); }
+.store-list li .city .loc {
+  display: block; font-size: 11px; color: var(--ink-muted);
+  font-family: var(--mono); margin-top: 2px; letter-spacing: 0.05em;
+}
+.store-list li .size {
+  font-family: var(--mono); font-size: 11px; color: var(--ink-muted);
+  text-align: right; letter-spacing: 0.05em;
+}
+
+/* TEAM */
+.team-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.team-card {
+  background: var(--bg); border: 1px solid var(--line);
+  padding: 36px 32px;
+}
+.team-card .team-num {
+  font-family: var(--serif); font-size: 56px; font-style: italic;
+  color: var(--accent); line-height: 1; margin-bottom: 8px;
+  font-weight: 300;
+}
+.team-card .team-num sup {
+  font-size: 0.4em; vertical-align: super; color: var(--ink-muted);
+}
+.team-card .team-role {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 16px;
+}
+.team-card h4 {
+  font-family: var(--serif); font-size: 22px; font-weight: 400;
+  margin-bottom: 10px;
+}
+.team-card p {
+  font-size: 13px; color: var(--ink-muted); line-height: 1.7;
+}
+
+.academy-frame {
+  margin-top: 40px; padding: 36px 32px;
+  background: var(--bg-card); border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+}
+.academy-frame h4 {
+  font-family: var(--serif); font-size: 26px; font-weight: 400;
+  margin-bottom: 12px;
+}
+.academy-frame p {
+  font-size: 14px; color: var(--ink-muted); line-height: 1.7;
+}
+
+/* FINANCIAL SCENARIOS */
+.scenarios {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+}
+.scenario {
+  background: var(--bg); border: 1px solid var(--line);
+  padding: 40px 32px; position: relative; transition: all 0.4s;
+}
+.scenario:hover { transform: translateY(-3px); }
+.scenario.recommended {
+  background: linear-gradient(180deg, rgba(212,165,116,0.06), transparent);
+  border-color: var(--accent);
+}
+.scenario.recommended::before {
+  content: 'RECOMMENDED';
+  position: absolute; top: -1px; right: 24px;
+  background: var(--accent); color: var(--bg);
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
+  padding: 4px 12px; border-radius: 0 0 4px 4px;
+  font-weight: 600;
+}
+.scenario .sc-tier {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+}
+.scenario h4 {
+  font-family: var(--serif); font-size: 28px; font-weight: 400;
+  margin-bottom: 6px;
+}
+.scenario .sc-range {
+  font-size: 14px; color: var(--ink-muted);
+  font-family: var(--mono); letter-spacing: 0.05em; margin-bottom: 28px;
+}
+.scenario .sc-amount {
+  font-family: var(--serif); font-size: 44px; font-weight: 300;
+  color: var(--accent); line-height: 1; margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+.scenario .sc-currency {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+  color: var(--ink-muted); text-transform: uppercase; margin-bottom: 28px;
+}
+.scenario ul {
+  list-style: none; padding: 0; margin: 0;
+  border-top: 1px solid var(--line); padding-top: 20px;
+}
+.scenario ul li {
+  display: flex; justify-content: space-between;
+  padding: 8px 0; font-size: 13px;
+  border-bottom: 1px dashed var(--line-soft);
+}
+.scenario ul li:last-child { border-bottom: none; }
+.scenario ul li span:first-child { color: var(--ink-muted); }
+.scenario ul li span:last-child { color: var(--ink); font-weight: 500; }
+
+.fin-note {
+  margin-top: 40px; padding: 28px 32px;
+  background: var(--bg-card); border-left: 3px solid var(--accent);
+}
+.fin-note p {
+  font-family: var(--serif); font-style: italic;
+  font-size: 18px; color: var(--ink); line-height: 1.5;
+}
+
+/* CTA */
+.cta-section {
+  padding: 150px 8vw; text-align: center;
+  background: linear-gradient(180deg, var(--bg) 0%, #0d0a07 100%);
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  width: 80vw; height: 80vw;
+  background: radial-gradient(circle, rgba(212,165,116,0.08), transparent 60%);
+  transform: translate(-50%, -50%); filter: blur(80px); pointer-events: none;
+}
+.cta-section .content { position: relative; z-index: 2; }
+.cta-section h2 {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(36px, 6vw, 88px); line-height: 1.05;
+  letter-spacing: -0.02em; margin-bottom: 32px;
+  max-width: 1100px; margin-left: auto; margin-right: auto;
+}
+.cta-section h2 em { font-style: italic; color: var(--accent); }
+.cta-section p {
+  font-size: 17px; color: var(--ink-muted);
+  max-width: 660px; margin: 0 auto 52px; line-height: 1.75;
+}
+.cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 17px 34px; font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  text-decoration: none; transition: all 0.3s; cursor: pointer;
+  border: none; font-weight: 500;
+}
+.btn.primary { background: var(--accent); color: var(--bg); }
+.btn.primary:hover { background: var(--ink); }
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* FOOTER */
+footer { padding: 56px 8vw 36px; border-top: 1px solid var(--line); background: #050505; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; margin-bottom: 44px; }
+.footer-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.footer-brand img { height: 40px; width: 40px; }
+.footer-brand-name { font-family: var(--serif); font-size: 26px; font-style: italic; font-weight: 400; }
+.brand-tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.25em; color: var(--ink-muted); text-transform: uppercase; }
+.footer-grid h5 {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.25em;
+  color: var(--accent); text-transform: uppercase;
+  margin-bottom: 18px; font-weight: 500;
+}
+.footer-grid p, .footer-grid a { font-size: 14px; color: var(--ink-muted); line-height: 1.8; text-decoration: none; display: block; }
+.footer-grid a:hover { color: var(--accent); }
+.footer-bottom {
+  padding-top: 24px; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+  color: var(--ink-faint); text-transform: uppercase;
+}
+
+/* ================================
+   RESPONSIVE — DESKTOP / LAPTOP / TABLET / MOBILE
+   ================================ */
+
+/* Large desktop (default): 1400px+ — base styles handle it */
+
+/* Medium desktop / large laptop: 1200–1399px */
+@media (max-width: 1399px) {
+  section { padding: 110px 6vw; }
+  .nav-menu a { font-size: 11px; padding: 8px 10px; letter-spacing: 0.04em; }
+  h1.hero-title { font-size: clamp(40px, 7vw, 110px); }
+  h2.section-title { font-size: clamp(32px, 4.5vw, 60px); }
+  .section-head { gap: 56px; margin-bottom: 72px; }
+}
+
+/* Laptop: 1024–1199px */
+@media (max-width: 1199px) {
+  .hero { padding: 130px 6vw 70px; }
+  .nav { padding: 14px 24px; }
+  .nav-menu a { font-size: 10.5px; padding: 7px 8px; }
+  .opp-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .opp-stats { grid-template-columns: 1fr 1fr; }
+  .case-frame { padding: 56px 44px; }
+  .sephora-frame, .case-frame { padding: 56px 44px; }
+}
+
+/* Tablet landscape / small laptop: 900–1099px */
+@media (max-width: 1099px) {
+  /* Convert nav to hamburger */
+  .nav { padding: 14px 20px; }
+  .nav-menu {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    background: rgba(10,10,10,0.97); backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column; padding: 12px 20px 24px; gap: 0;
+    max-height: calc(100vh - 70px); overflow-y: auto;
+  }
+  .nav-menu.open { display: flex; }
+  .nav-menu a {
+    padding: 14px 16px; width: 100%; font-size: 13px;
+    border-bottom: 1px solid var(--line-soft); border-radius: 0;
+  }
+  .nav-menu a:last-child { border-bottom: none; }
+  .menu-toggle { display: inline-flex; }
+
+  /* Section heading stacks */
+  .section-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 60px; }
+
+  /* Multi-column grids → 2 columns */
+  .subs-grid { grid-template-columns: repeat(2, 1fr); }
+  .subs-grid .sub:last-child { grid-column: span 2; }
+  .strat-cards { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid .team-card:last-child { grid-column: span 2; }
+  .scenarios { grid-template-columns: 1fr; }
+  .scenarios .scenario.recommended { order: -1; }
+  .case-cards { grid-template-columns: 1fr; }
+  .stores-grid { grid-template-columns: 1fr; }
+
+  /* Stats remain 2x2 */
+  .opp-grid { grid-template-columns: 1fr; gap: 36px; }
+  .opp-stats { grid-template-columns: 1fr 1fr; }
+}
+
+/* Tablet portrait / large phone: 768–899px */
+@media (max-width: 899px) {
+  section { padding: 90px 5vw; }
+  .hero { padding: 120px 5vw 60px; }
+  h1.hero-title { font-size: clamp(36px, 8vw, 84px); margin-bottom: 28px; }
+  h2.section-title { font-size: clamp(28px, 5vw, 48px); }
+
+  /* Section padding inside frames */
+  .case-frame { padding: 44px 28px; }
+  .sephora-frame { padding: 44px 28px; }
+  .case-frame::before, .case-frame::after { width: 24px; height: 24px; }
+  .academy-frame { padding: 28px 24px; }
+  .fin-note { padding: 22px 24px; }
+  .fin-note p { font-size: 16px; }
+
+  /* Hero meta becomes more compact */
+  .hero-meta { gap: 24px; }
+  .hero-meta div { min-width: 120px; }
+  .eyebrow { margin-bottom: 28px; font-size: 10px; }
+
+  /* Nav brand smaller */
+  .nav-brand .azra-logo { height: 32px; width: 32px; }
+  .sephora-mark { font-size: 14px; letter-spacing: 0.36em; }
+  .nav-brand .x-mark { font-size: 19px; }
+
+  /* Subsidiaries: keep 2 cols but tighten */
+  .subs-grid { gap: 1px; }
+  .sub { padding: 28px 22px; }
+  .sub h4 { font-size: 22px; }
+
+  /* Strategy cards */
+  .strat-card { padding: 28px 24px; }
+  .strat-card .strat-num { font-size: 44px; margin-bottom: 14px; }
+  .strat-card h4 { font-size: 21px; }
+
+  /* Cases */
+  .case-card { padding: 28px 24px; }
+  .case-card h4 { font-size: 24px; }
+  .case-card .case-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .case-card .case-stats div .num { font-size: 24px; }
+
+  /* Stats */
+  .opp-stat { padding: 26px 22px; }
+  .opp-stat .num { font-size: 44px; }
+
+  /* Stores */
+  .store-card { padding: 28px 24px; }
+  .store-card h4 { font-size: 26px; }
+  .store-list li { grid-template-columns: 50px 1fr 60px; gap: 12px; padding: 12px 0; }
+  .store-list li .city { font-size: 13px; }
+  .store-list li .city .loc { font-size: 10.5px; }
+  .store-list li .month { font-size: 10px; }
+  .store-list li .size { font-size: 10px; }
+
+  /* Team cards */
+  .team-card { padding: 30px 24px; }
+  .team-card .team-num { font-size: 44px; }
+  .team-card h4 { font-size: 20px; }
+
+  /* Scenarios — single column means full width */
+  .scenario { padding: 32px 26px; }
+  .scenario .sc-amount { font-size: 38px; }
+
+  /* Gantt — keep horizontal scroll but make it clear */
+  .gantt-wrap { padding: 18px 12px; }
+  .gantt-wrap::after {
+    content: '← →';
+    display: block;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.3em;
+    margin-top: 12px;
+  }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .footer-grid > div:first-child { grid-column: span 2; }
+}
+
+/* Phone landscape / small tablet: 600–767px */
+@media (max-width: 767px) {
+  section { padding: 80px 5vw; }
+  .hero { padding: 110px 5vw 50px; }
+  h1.hero-title { font-size: clamp(34px, 9vw, 64px); line-height: 1; }
+  h2.section-title { font-size: clamp(26px, 6vw, 40px); }
+
+  /* Subs single column */
+  .subs-grid { grid-template-columns: 1fr; }
+  .subs-grid .sub:last-child { grid-column: span 1; }
+  .subs-grid .sub:last-child > div { grid-template-columns: 1fr !important; gap: 16px !important; }
+
+  /* Team cards single column */
+  .team-grid { grid-template-columns: 1fr; }
+  .team-grid .team-card:last-child { grid-column: span 1; }
+
+  /* Hero meta stack */
+  .hero-meta { gap: 20px; flex-direction: column; }
+  .hero-meta div { width: 100%; }
+
+  /* Nav even smaller */
+  .nav { padding: 12px 16px; gap: 12px; }
+  .nav-brand .azra-logo { height: 28px; width: 28px; }
+  .sephora-mark { font-size: 12px; letter-spacing: 0.32em; padding-top: 5px; }
+  .sephora-mark::before { border-bottom-width: 6px; border-left-width: 3px; border-right-width: 3px; }
+  .nav-brand .x-mark { font-size: 17px; }
+  .lang-toggle button { padding: 6px 11px; font-size: 10px; }
+
+  /* Smaller frames */
+  .case-frame { padding: 36px 22px; }
+  .sephora-frame { padding: 36px 22px; }
+  .case-mark, .frame-mark { font-size: 12px; letter-spacing: 0.3em; }
+
+  /* Stats tighter */
+  .opp-stats { grid-template-columns: 1fr; }
+  .opp-stat { padding: 22px 20px; }
+  .opp-stat .num { font-size: 38px; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-grid > div:first-child { grid-column: span 1; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+  /* Buttons */
+  .btn { padding: 15px 24px; font-size: 10.5px; letter-spacing: 0.2em; }
+  .cta-buttons { flex-direction: column; align-items: stretch; }
+  .cta-buttons .btn { justify-content: center; }
+}
+
+/* Phone portrait: under 600px */
+@media (max-width: 599px) {
+  section { padding: 70px 5vw; }
+  .hero { padding: 100px 5vw 40px; }
+  h1.hero-title { font-size: clamp(30px, 10vw, 52px); margin-bottom: 24px; }
+  .hero-tagline { font-size: 14px; margin-bottom: 36px; }
+  h2.section-title { font-size: clamp(24px, 7vw, 36px); }
+
+  /* Section nums */
+  .section-num { font-size: 10px; }
+  .section-num span { font-size: 11px; }
+
+  /* Stats grid */
+  .opp-stat .num { font-size: 36px; line-height: 1; }
+  .opp-stat .lbl { font-size: 9.5px; }
+
+  /* Sub cards */
+  .sub { padding: 24px 20px; }
+  .sub .sub-icon { width: 26px; height: 26px; margin-bottom: 18px; }
+  .sub h4 { font-size: 21px; }
+  .sub .sub-tag { font-size: 9.5px; letter-spacing: 0.18em; }
+  .sub p { font-size: 13px; }
+
+  /* Strategy */
+  .strat-card { padding: 26px 20px; }
+  .strat-card .strat-num { font-size: 38px; }
+  .strat-card h4 { font-size: 20px; }
+  .strat-card p { font-size: 13.5px; }
+
+  /* Case cards */
+  .case-card { padding: 24px 20px; }
+  .case-card h4 { font-size: 22px; }
+  .case-card .case-stats div .num { font-size: 22px; }
+  .case-card .case-stats div .lbl { font-size: 8.5px; letter-spacing: 0.15em; }
+
+  /* Stores */
+  .store-card { padding: 26px 20px; }
+  .store-card h4 { font-size: 24px; }
+  .store-card .store-when { font-size: 10px; letter-spacing: 0.2em; }
+  .store-list li {
+    grid-template-columns: 44px 1fr;
+    gap: 12px;
+    padding: 11px 0;
+  }
+  .store-list li .size { display: none; }
+  .store-list li .city { font-size: 13px; }
+  .store-list li .city .loc { font-size: 10px; margin-top: 1px; }
+  .store-list li .month { font-size: 10px; }
+
+  /* Team */
+  .team-card { padding: 26px 22px; }
+  .team-card .team-num { font-size: 38px; }
+  .team-card h4 { font-size: 19px; }
+  .team-card p { font-size: 12.5px; }
+  .academy-frame { padding: 24px 20px; }
+  .academy-frame h4 { font-size: 21px; }
+
+  /* Scenarios */
+  .scenario { padding: 28px 22px; }
+  .scenario h4 { font-size: 24px; }
+  .scenario .sc-amount { font-size: 34px; }
+  .scenario ul li { font-size: 12px; padding: 7px 0; }
+
+  /* Gantt — make rows narrower so labels still fit */
+  .gantt-row, .gantt-milestones { grid-template-columns: 200px repeat(24, minmax(28px, 1fr)); }
+  .gantt-row .task-cell { padding: 10px 10px; font-size: 11.5px; gap: 8px; }
+  .gantt-row.header .task-cell { font-size: 9px; }
+  .gantt-row .month-cell { font-size: 8.5px; padding: 8px 1px; }
+  .gantt-inner, .gantt-milestones { min-width: 920px; }
+  .bar { font-size: 9px; padding: 0 6px; min-height: 20px; margin: 6px 1px; }
+  .gantt-legend { gap: 14px; font-size: 9px; }
+  .gantt-legend span.swatch { width: 12px; height: 12px; margin-right: 6px; }
+  .gantt-milestones .ms-label { padding: 0 10px; font-size: 9px; }
+  .milestone { width: 10px; height: 10px; margin-left: -5px; }
+  .milestone-label { font-size: 8.5px; }
+
+  /* Pull quote */
+  .azra-text .pull, .fin-note p { font-size: 18px; }
+
+  /* CTA */
+  .cta-section { padding: 100px 5vw; }
+  .cta-section h2 { font-size: clamp(28px, 8vw, 42px); margin-bottom: 24px; }
+  .cta-section p { font-size: 14.5px; margin-bottom: 36px; }
+
+  /* Footer */
+  footer { padding: 40px 5vw 30px; }
+  .footer-brand-name { font-size: 22px; }
+  .footer-brand img { height: 34px; width: 34px; }
+  .footer-bottom { font-size: 9px; gap: 8px; }
+
+  /* Eyebrow tighter */
+  .eyebrow { font-size: 9.5px; gap: 10px; }
+  .eyebrow .line { width: 36px; }
+}
+
+/* Very small phones: under 380px */
+@media (max-width: 379px) {
+  .nav { padding: 12px 14px; }
+  .nav-brand .azra-logo { height: 26px; width: 26px; }
+  .sephora-mark { font-size: 11px; letter-spacing: 0.28em; }
+  .lang-toggle button { padding: 5px 9px; font-size: 9.5px; letter-spacing: 0.12em; }
+  .menu-toggle { width: 34px; height: 34px; }
+  h1.hero-title { font-size: clamp(26px, 11vw, 44px); }
+  .hero-tagline { font-size: 13.5px; }
+  .opp-stat .num { font-size: 32px; }
+  .scenario .sc-amount { font-size: 30px; }
+  .gantt-row, .gantt-milestones { grid-template-columns: 170px repeat(24, minmax(24px, 1fr)); }
+  .gantt-inner, .gantt-milestones { min-width: 770px; }
+}
+
+/* Landscape orientation on phones — keep nav usable */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { min-height: auto; padding-top: 100px; padding-bottom: 60px; }
+  .nav-menu { max-height: calc(100vh - 60px); }
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .glow1, .glow2 { transform: none !important; }
+}
+
+/* Print stylesheet — basic */
+@media print {
+  .nav, .lang-toggle, .menu-toggle, .cta-buttons, .gantt-wrap::after { display: none !important; }
+  body { background: white; color: black; }
+  body::before { display: none; }
+  section { padding: 30px 5vw; page-break-inside: avoid; }
+  [data-lang="en"] { display: none !important; }
+  [data-lang="tr"] { display: block !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#hero" class="nav-brand">
+    <img class="azra-logo" alt="Azra Group" src="data:image/png;base64,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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+    <span class="x-mark">×</span>
+    <span class="sephora-mark">SEPHORA</span>
+  </a>
+
+  <div class="nav-menu" id="navMenu">
+    <a href="#azra"><span data-lang="tr" class="active-lang">Azra Grup</span><span data-lang="en">Azra Group</span></a>
+    <a href="#track"><span data-lang="tr" class="active-lang">Track Record</span><span data-lang="en">Track Record</span></a>
+    <a href="#opportunity"><span data-lang="tr" class="active-lang">Fırsat</span><span data-lang="en">Opportunity</span></a>
+    <a href="#strategy"><span data-lang="tr" class="active-lang">Strateji</span><span data-lang="en">Strategy</span></a>
+    <a href="#gantt"><span data-lang="tr" class="active-lang">Yol Haritası</span><span data-lang="en">Roadmap</span></a>
+    <a href="#stores"><span data-lang="tr" class="active-lang">Mağaza Planı</span><span data-lang="en">Store Plan</span></a>
+    <a href="#team"><span data-lang="tr" class="active-lang">Ekip</span><span data-lang="en">Team</span></a>
+    <a href="#financial"><span data-lang="tr" class="active-lang">Mali Çerçeve</span><span data-lang="en">Financial</span></a>
+    <a href="#contact"><span data-lang="tr" class="active-lang">İletişim</span><span data-lang="en">Contact</span></a>
+  </div>
+
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="active" onclick="setLang('tr', this)">TR</button>
+      <button onclick="setLang('en', this)">EN</button>
+    </div>
+    <button class="menu-toggle" id="menuToggle" onclick="toggleMenu(this)" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"><div class="glow1"></div><div class="glow2"></div></div>
+  <div class="hero-content">
+    <div data-lang="tr" class="active-lang">
+      <div class="eyebrow"><span class="line"></span>BAYİLİK & DİSTRİBÜTÖRLÜK SUNUMU · 2026</div>
+      <h1 class="hero-title">
+        Sephora <span class="ampersand">×</span><br>
+        <em>Azra Group</em>:<br>
+        İran ve komşu<br>pazarlara açılım.
+      </h1>
+      <p class="hero-tagline">
+        Azra Group, İran pazarında SunExpress ve Türk Hava Yolları'nın tek yetkili distribütörlüğünü yürütmüş, çok-sektörlü bir Türk holdingidir. Şimdi aynı operasyonel disiplini, kanıtlanmış İran network'ünü ve yerel JV ortağımızı, Sephora'nın İran ve komşu Müslüman pazarlarındaki açılımı için sunuyoruz.
+      </p>
+    </div>
+    <div data-lang="en">
+      <div class="eyebrow"><span class="line"></span>FRANCHISE & DISTRIBUTION PROPOSAL · 2026</div>
+      <h1 class="hero-title">
+        Sephora <span class="ampersand">×</span><br>
+        <em>Azra Group</em>:<br>
+        Entering Iran &<br>adjacent markets.
+      </h1>
+      <p class="hero-tagline">
+        Azra Group is a multi-sector Turkish holding that has previously operated as the sole authorized distributor for SunExpress and Turkish Airlines in Iran. We bring the same operational discipline, a proven Iran network, and an existing local JV partner to Sephora's expansion into Iran and adjacent Muslim-majority markets.
+      </p>
+    </div>
+
+    <div class="hero-meta">
+      <div>
+        <span data-lang="tr" class="active-lang">SUNUM</span>
+        <span data-lang="en">PREPARED</span>
+        <span data-lang="tr" class="active-lang">2026</span>
+        <span data-lang="en">2026</span>
+      </div>
+      <div>
+        <span data-lang="tr" class="active-lang">HEDEF PAZAR</span>
+        <span data-lang="en">TARGET MARKET</span>
+        <span data-lang="tr" class="active-lang">İran · 88M nüfus</span>
+        <span data-lang="en">Iran · 88M population</span>
+      </div>
+      <div>
+        <span data-lang="tr" class="active-lang">HAZIRLAYAN</span>
+        <span data-lang="en">PREPARED BY</span>
+        <span>Azra Group · Istanbul</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AZRA SUBSIDIARIES -->
+<section id="azra">
+  <div class="section-head">
+    <div class="section-num">
+      <span data-lang="tr" class="active-lang">01 — Azra Group</span>
+      <span data-lang="en">01 — Azra Group</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="tr" class="active-lang">Yedi sektör, <em>altı operasyonel marka</em>.</span>
+      <span data-lang="en">Seven sectors, <em>six operating brands</em>.</span>
+    </h2>
+  </div>
+
+  <div class="azra-intro">
+    <p data-lang="tr" class="active-lang">
+      Azra Group, 1999'dan bu yana <strong>turizm, inşaat, gıda, enerji, teknoloji, eğitim ve tarım</strong> sektörlerinde faaliyet gösteren İstanbul merkezli bir holdingdir. Her bir iş kolu, kendi alt markası altında bağımsız operasyonel kapasiteye sahiptir. <strong>Premium kozmetik perakendesi için kritik olan dört yetkinlik — turizm/hospitality, inşaat/buildout, teknoloji ve eğitim — holdingin omurgasını oluşturuyor.</strong>
+    </p>
+    <p data-lang="en">
+      Founded in 1999, Azra Group is an Istanbul-headquartered holding operating across <strong>tourism, construction, food, energy, technology, education and agriculture</strong>. Each vertical operates as its own brand with independent operational capacity. <strong>The four capabilities critical for premium cosmetics retail — hospitality, construction/buildout, technology and education — form the spine of the holding.</strong>
+    </p>
+  </div>
+
+  <div class="subs-grid">
+
+    <!-- Azra Turizm — featured -->
+    <div class="sub featured">
+      <svg class="sub-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 12h.01M9 16h.01M14 12h.01M14 16h.01"/></svg>
+      <h4>Azra Turizm</h4>
+      <div class="sub-tag">
+        <span data-lang="tr" class="active-lang">Turizm · Hospitality · Distribütörlük</span>
+        <span data-lang="en">Tourism · Hospitality · Distribution</span>
+      </div>
+      <p data-lang="tr" class="active-lang">Otel ve tatil köyü işletmeciliği, MICE organizasyonları ve kültür turlarının yanı sıra <strong>İran pazarında SunExpress ve THY'nin tek yetkili distribütörlüğünü</strong> yürütmüş, holdingin en deneyimli iş kolu.</p>
+      <p data-lang="en">Hotel and resort operations, MICE organization and cultural tours — plus a proven track record as <strong>sole authorized distributor for SunExpress and Turkish Airlines in Iran</strong>. The holding's most experienced vertical.</p>
+      <ul>
+        <li><span data-lang="tr" class="active-lang">Otel & Tatil Köyleri</span><span data-lang="en">Hotels & Resorts</span></li>
+        <li><span data-lang="tr" class="active-lang">MICE Organizasyonları</span><span data-lang="en">MICE Organization</span></li>
+        <li><span data-lang="tr" class="active-lang">Kültür Turları</span><span data-lang="en">Cultural Tours</span></li>
+        <li><span data-lang="tr" class="active-lang">Distribütörlük & Marka Temsilciliği</span><span data-lang="en">Distribution & Brand Representation</span></li>
+      </ul>
+    </div>
+
+    <!-- Azra İnşaat -->
+    <div class="sub">
+      <svg class="sub-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 22h20M3 22V8l9-6 9 6v14M9 22V12h6v10"/></svg>
+      <h4>Azra İnşaat</h4>
+      <div class="sub-tag">
+        <span data-lang="tr" class="active-lang">İnşaat · Mimari · Buildout</span>
+        <span data-lang="en">Construction · Architecture · Buildout</span>
+      </div>
+      <p data-lang="tr" class="active-lang">Modern mimari ve yüksek mühendislik çözümleriyle konut, ofis ve altyapı projeleri. Premium perakende mağaza buildout için tam yetkinlik.</p>
+      <p data-lang="en">Residential, office and infrastructure projects with modern architecture and high engineering standards. Full capability for premium retail buildout.</p>
+      <ul>
+        <li><span data-lang="tr" class="active-lang">Konut & Ofis Projeleri</span><span data-lang="en">Residential & Office Projects</span></li>
+        <li><span data-lang="tr" class="active-lang">Perakende Mağaza Buildout</span><span data-lang="en">Retail Store Buildout</span></li>
+        <li><span data-lang="tr" class="active-lang">Modern Mimari & Mühendislik</span><span data-lang="en">Modern Architecture & Engineering</span></li>
+      </ul>
+    </div>
+
+    <!-- KAAT Dijital -->
+    <div class="sub">
+      <svg class="sub-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+      <h4>KAAT Dijital</h4>
+      <div class="sub-tag">
+        <span data-lang="tr" class="active-lang">Yazılım · Yapay Zeka · Siber Güvenlik</span>
+        <span data-lang="en">Software · AI · Cybersecurity</span>
+      </div>
+      <p data-lang="tr" class="active-lang">Özelleştirilmiş yazılım, yapay zeka ve siber güvenlik. Beauty Insider, e-ticaret ve CRM altyapısının yerelleştirilmesi için iç mühendislik kapasitesi.</p>
+      <p data-lang="en">Custom software, AI and cybersecurity. In-house engineering capacity for localizing Beauty Insider, e-commerce and CRM stacks.</p>
+      <ul>
+        <li><span data-lang="tr" class="active-lang">Özel Yazılım Çözümleri</span><span data-lang="en">Custom Software Solutions</span></li>
+        <li><span data-lang="tr" class="active-lang">Yapay Zeka & Makine Öğrenmesi</span><span data-lang="en">AI & Machine Learning</span></li>
+        <li><span data-lang="tr" class="active-lang">Siber Güvenlik & Bulut Bilişim</span><span data-lang="en">Cybersecurity & Cloud</span></li>
+      </ul>
+    </div>
+
+    <!-- Tarhan Koleji -->
+    <div class="sub">
+      <svg class="sub-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 10v6M2 10l10-5 10 5-10 5z M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      <h4>Tarhan Koleji</h4>
+      <div class="sub-tag">
+        <span data-lang="tr" class="active-lang">Eğitim · K-12 · Mesleki Eğitim</span>
+        <span data-lang="en">Education · K-12 · Vocational</span>
+      </div>
+      <p data-lang="tr" class="active-lang">Maltepe Kampüsü dahil özel okul ve mesleki eğitim altyapısı. Sephora Akademisi (Beauty Advisor + MUA eğitim programı) için temel.</p>
+      <p data-lang="en">Private schools and vocational training including the Maltepe Campus. The foundation for a Sephora Academy (Beauty Advisor + MUA training program).</p>
+      <ul>
+        <li><span data-lang="tr" class="active-lang">Özel Okullar (K-12)</span><span data-lang="en">Private Schools (K-12)</span></li>
+        <li><span data-lang="tr" class="active-lang">Mesleki Eğitim Programları</span><span data-lang="en">Vocational Programs</span></li>
+        <li><span data-lang="tr" class="active-lang">Online Eğitim Platformları</span><span data-lang="en">Online Learning Platforms</span></li>
+      </ul>
+    </div>
+
+    <!-- Merin Enerji -->
+    <div class="sub">
+      <svg class="sub-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      <h4>Merin Enerji</h4>
+      <div class="sub-tag">
+        <span data-lang="tr" class="active-lang">Yenilenebilir Enerji</span>
+        <span data-lang="en">Renewable Energy</span>
+      </div>
+      <p data-lang="tr" class="active-lang">Güneş, rüzgar ve jeotermal santraller; enerji verimliliği danışmanlığı. Sürdürülebilir perakende operasyonu için iç enerji altyapısı.</p>
+      <p data-lang="en">Solar, wind and geothermal plants; energy efficiency consultancy. Internal energy infrastructure for sustainable retail operations.</p>
+      <ul>
+        <li><span data-lang="tr" class="active-lang">Güneş, Rüzgar, Jeotermal</span><span data-lang="en">Solar, Wind, Geothermal</span></li>
+        <li><span data-lang="tr" class="active-lang">Enerji Verimliliği Danışmanlığı</span><span data-lang="en">Energy Efficiency Consulting</span></li>
+      </ul>
+    </div>
+
+    <!-- Clasigo Gıda -->
+    <div class="sub">
+      <svg class="sub-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v8M5 12h14M5 12c0 5 3 8 7 8s7-3 7-8"/></svg>
+      <h4>Clasigo Gıda</h4>
+      <div class="sub-tag">
+        <span data-lang="tr" class="active-lang">Gıda · Organik Tarım · Dağıtım</span>
+        <span data-lang="en">Food · Organic · Distribution</span>
+      </div>
+      <p data-lang="tr" class="active-lang">Tarladan sofraya değer zinciri, organik tarım ve gıda dağıtımı. Çok katmanlı dağıtım, soğuk zincir ve kalite kontrol deneyimi.</p>
+      <p data-lang="en">Farm-to-table value chain, organic farming and food distribution. Multi-tier distribution, cold-chain and quality control experience.</p>
+      <ul>
+        <li><span data-lang="tr" class="active-lang">Organik Tarım & Üretim</span><span data-lang="en">Organic Farming & Production</span></li>
+        <li><span data-lang="tr" class="active-lang">Tedarik Zinciri & Dağıtım</span><span data-lang="en">Supply Chain & Distribution</span></li>
+      </ul>
+    </div>
+
+    <!-- Azra Besicilik -->
+    <div class="sub" style="grid-column: span 3;">
+      <div style="display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center;">
+        <div>
+          <svg class="sub-icon" style="margin-bottom: 0;" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </div>
+        <div>
+          <h4 style="display: inline-block; margin-right: 16px;">Azra Besicilik</h4>
+          <span class="sub-tag" style="display: inline-block; margin-bottom: 0;">
+            <span data-lang="tr" class="active-lang">Tarım · Hayvancılık · Tarımsal Teknoloji</span>
+            <span data-lang="en">Agriculture · Livestock · AgriTech</span>
+          </span>
+          <p style="margin-top: 12px; margin-bottom: 0;" data-lang="tr" class="active-lang">Modern tarım teknolojileri ve sürdürülebilir uygulamalarla bitkisel üretim ve hayvancılık; tarımsal danışmanlık.</p>
+          <p style="margin-top: 12px; margin-bottom: 0;" data-lang="en">Plant production and livestock with modern agritech and sustainable practices; agricultural consulting.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRACK RECORD -->
+<section class="alt" id="track">
+  <div class="section-head">
+    <div class="section-num">
+      <span data-lang="tr" class="active-lang">02 — Track Record</span>
+      <span data-lang="en">02 — Track Record</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="tr" class="active-lang">İran pazarını <em>biliyoruz</em>. Hipotez değil, deneyim.</span>
+      <span data-lang="en">We <em>know</em> the Iran market. Not hypothesis — experience.</span>
+    </h2>
+  </div>
+
+  <div class="case-frame">
+    <div class="case-mark">— Azra Turizm · İran Operasyonları</div>
+    <h3 data-lang="tr" class="active-lang">
+      Azra Turizm, İran'da <em>iki büyük Türk markasının</em><br>
+      tek yetkili distribütörlüğünü yürüttü.
+    </h3>
+    <h3 data-lang="en">
+      Azra Turizm has served as <em>sole authorized distributor</em><br>
+      for two major Turkish brands in Iran.
+    </h3>
+
+    <p data-lang="tr" class="active-lang">
+      Çoğu uluslararası marka için İran "henüz girilmemiş, riskli ve karmaşık" bir pazar. Azra için durum farklı: <strong>Tahran, İsfahan ve Şiraz'da yıllarca distribütörlük operasyonu yürüttük.</strong> Bu süreçte yerel hukuki sistem, ödeme rayları, kültürel hassasiyetler, gümrük ve ithalat süreçleri, B2B/B2C network ve yerel istihdam dinamiklerini birinci elden öğrendik.
+    </p>
+    <p data-lang="en">
+      For most international brands, Iran is "uncharted, risky and complex." For Azra, it's different: <strong>we operated distribution networks in Tehran, Isfahan and Shiraz for years.</strong> Through that experience we built first-hand knowledge of the local legal system, payment rails, cultural sensitivities, customs and import processes, B2B/B2C networks, and local employment dynamics.
+    </p>
+
+    <div class="case-cards">
+      <div class="case-card">
+        <div class="case-brand">SunExpress · 2010s–</div>
+        <h4 data-lang="tr" class="active-lang">İran Tek Yetkili Distribütörü</h4>
+        <h4 data-lang="en">Iran Sole Authorized Distributor</h4>
+        <span class="case-role">
+          <span data-lang="tr" class="active-lang">Azra Turizm</span>
+          <span data-lang="en">Azra Turizm</span>
+        </span>
+        <p data-lang="tr" class="active-lang">SunExpress'in (Lufthansa & Türk Hava Yolları ortak girişimi) İran'daki tek yetkili distribütörü olarak satış, yerel acente network'ü, dağıtım ve müşteri operasyonlarını yönettik.</p>
+        <p data-lang="en">As sole authorized distributor for SunExpress (a Lufthansa & Turkish Airlines joint venture) in Iran, we managed sales, local agency networks, distribution and customer operations.</p>
+        <div class="case-stats">
+          <div>
+            <div class="num">3+</div>
+            <div class="lbl"><span data-lang="tr" class="active-lang">Şehir Network</span><span data-lang="en">City Network</span></div>
+          </div>
+          <div>
+            <div class="num">100s</div>
+            <div class="lbl"><span data-lang="tr" class="active-lang">Yerel Acente</span><span data-lang="en">Local Agents</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-brand">Türk Hava Yolları · 2010s–</div>
+        <h4 data-lang="tr" class="active-lang">İran Tek Yetkili Distribütörü</h4>
+        <h4 data-lang="en">Iran Sole Authorized Distributor</h4>
+        <span class="case-role">
+          <span data-lang="tr" class="active-lang">Azra Turizm</span>
+          <span data-lang="en">Azra Turizm</span>
+        </span>
+        <p data-lang="tr" class="active-lang">Türk Hava Yolları'nın İran'daki tek yetkili distribütörü olarak ofis operasyonu, kurumsal satış, B2B kanal yönetimi ve İran'ın dünya standartlarındaki en büyük havayolu markasıyla olan ilişki yönetimini sağladık.</p>
+        <p data-lang="en">As sole authorized distributor for Turkish Airlines in Iran, we operated offices, corporate sales, B2B channel management and stakeholder relations for one of the world's leading airline brands.</p>
+        <div class="case-stats">
+          <div>
+            <div class="num">B2B</div>
+            <div class="lbl"><span data-lang="tr" class="active-lang">+ B2C Kanal</span><span data-lang="en">+ B2C Channel</span></div>
+          </div>
+          <div>
+            <div class="num">★★★★★</div>
+            <div class="lbl"><span data-lang="tr" class="active-lang">Marka Standardı</span><span data-lang="en">Brand Standard</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITY -->
+<section id="opportunity">
+  <div class="section-head">
+    <div class="section-num">
+      <span data-lang="tr" class="active-lang">03 — Fırsat</span>
+      <span data-lang="en">03 — Opportunity</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="tr" class="active-lang">Sephora'nın <em>henüz girmediği</em> 88M'lik pazar.</span>
+      <span data-lang="en">An <em>unaddressed</em> 88M-person market.</span>
+    </h2>
+  </div>
+
+  <div class="opp-grid">
+    <div class="opp-text">
+      <p data-lang="tr" class="active-lang">
+        Sephora 2007'den bu yana Orta Doğu'da Chalhoub Group ile ortak girişim modeliyle <strong>BAE, Suudi Arabistan, Bahreyn, Katar ve Kuveyt'te 66 mağazaya</strong> ulaştı. Dubai Mall mağazası, dünya genelinde 1 numaralı Sephora mağazası olarak biliniyor.
+      </p>
+      <p data-lang="tr" class="active-lang">
+        İran ise — nüfus, harcama gücü ve kozmetik talebi açısından MENA'nın <strong>ikinci en büyük pazarı</strong> olmasına rağmen — bu yapının dışında kalmış durumda. Pazarın yaklaşık <strong>%70'i gri/kayıt dışı kanallardan</strong> akıyor; bu, resmi ve disiplinli bir distribütörlük yapısının önündeki en büyük yapısal fırsattır.
+      </p>
+      <p data-lang="tr" class="active-lang">
+        Komşu pazarlarda da Sephora bayrağı yok: <strong>Türkiye (85M), Azerbaycan (10M), Pakistan (240M), Irak (45M)</strong> — hepsi açık alan.
+      </p>
+      <p data-lang="en">
+        Since 2007, Sephora has expanded across the Middle East through a JV with Chalhoub Group, reaching <strong>66 stores in the UAE, KSA, Bahrain, Qatar and Kuwait</strong>. The Dubai Mall flagship is ranked as Sephora's #1 store globally.
+      </p>
+      <p data-lang="en">
+        Iran — despite being the <strong>second-largest beauty market in MENA</strong> by population, spending power and demand — sits outside this footprint. About <strong>70% of the market flows through grey channels</strong>; this is the single biggest structural opportunity for a formal, disciplined distribution structure.
+      </p>
+      <p data-lang="en">
+        Adjacent markets are equally open: <strong>Turkey (85M), Azerbaijan (10M), Pakistan (240M), Iraq (45M)</strong> — all white space.
+      </p>
+    </div>
+    <div class="opp-stats">
+      <div class="opp-stat">
+        <div class="num">$2.1B</div>
+        <div class="lbl"><span data-lang="tr" class="active-lang">İran Kozmetik Pazarı</span><span data-lang="en">Iran Cosmetics Market</span></div>
+        <div class="desc"><span data-lang="tr" class="active-lang">MENA'da 2. sırada</span><span data-lang="en">2nd largest in MENA</span></div>
+      </div>
+      <div class="opp-stat">
+        <div class="num">$595M</div>
+        <div class="lbl"><span data-lang="tr" class="active-lang">2026 İthalat Projeksiyonu</span><span data-lang="en">2026 Imports Projection</span></div>
+        <div class="desc"><span data-lang="tr" class="active-lang">Yıllık %2.7 büyüme</span><span data-lang="en">2.7% YoY growth</span></div>
+      </div>
+      <div class="opp-stat">
+        <div class="num">~70%</div>
+        <div class="lbl"><span data-lang="tr" class="active-lang">Gri Pazar Payı</span><span data-lang="en">Grey Market Share</span></div>
+        <div class="desc"><span data-lang="tr" class="active-lang">Resmi distribütörlüğe muazzam fırsat</span><span data-lang="en">Massive formal-distribution opportunity</span></div>
+      </div>
+      <div class="opp-stat">
+        <div class="num">0</div>
+        <div class="lbl"><span data-lang="tr" class="active-lang">İran'daki Sephora Mağazası</span><span data-lang="en">Sephora Stores in Iran</span></div>
+        <div class="desc"><span data-lang="tr" class="active-lang">Beyaz alan · sıfır rekabet</span><span data-lang="en">White space · zero competition</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section class="alt" id="strategy">
+  <div class="section-head">
+    <div class="section-num">
+      <span data-lang="tr" class="active-lang">04 — Strateji</span>
+      <span data-lang="en">04 — Strategy</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="tr" class="active-lang">Üç katmanlı <em>giriş yapısı</em>.</span>
+      <span data-lang="en">A three-layered <em>entry structure</em>.</span>
+    </h2>
+  </div>
+
+  <div class="strat-cards">
+    <div class="strat-card">
+      <div class="strat-num">01</div>
+      <h4 data-lang="tr" class="active-lang">Yerel JV Ortağı — hazır</h4>
+      <h4 data-lang="en">Local JV Partner — already in place</h4>
+      <p data-lang="tr" class="active-lang">İran tarafında potansiyel JV ortağımız hazır. Bu, "tüzel kişilik nasıl kurulur" sorusunu sıfırlar — yerel ortaklık üzerinden Iranian-registered yapı 30–60 günde aktif hale getirilebilir.</p>
+      <p data-lang="en">Our local Iranian JV partner is already identified. This eliminates the "how do we form a legal entity" question — an Iranian-registered structure can be active within 30–60 days through the local partnership.</p>
+      <span class="strat-tag">
+        <span data-lang="tr" class="active-lang">M0–M2 · KURULUŞ</span>
+        <span data-lang="en">M0–M2 · SETUP</span>
+      </span>
+    </div>
+
+    <div class="strat-card">
+      <div class="strat-num">02</div>
+      <h4 data-lang="tr" class="active-lang">Türkiye-İran Bridge</h4>
+      <h4 data-lang="en">Turkey-Iran Bridge</h4>
+      <p data-lang="tr" class="active-lang">İstanbul merkezli Azra Turizm, Türkiye-İran ticaret koridoru bilgisini, gümrük süreçleri ve ödeme yapılarını yıllardır yönetmiş bulunuyor. Sephora bu deneyimi sıfırdan kurmak zorunda kalmaz.</p>
+      <p data-lang="en">Istanbul-based Azra Turizm has years of experience managing the Turkey-Iran trade corridor, customs and payment structures. Sephora doesn't need to build this from scratch.</p>
+      <span class="strat-tag">
+        <span data-lang="tr" class="active-lang">SUREKLI · KÖPRÜ</span>
+        <span data-lang="en">ONGOING · BRIDGE</span>
+      </span>
+    </div>
+
+    <div class="strat-card">
+      <div class="strat-num">03</div>
+      <h4 data-lang="tr" class="active-lang">Esnek Sözleşme Yapısı</h4>
+      <h4 data-lang="en">Flexible Deal Structure</h4>
+      <p data-lang="tr" class="active-lang">Sephora'nın global tercihine göre yapı esnek: Master Franchise / Exclusive Distribution veya JV (Chalhoub modeli). Azra her iki yapıya da hazır; karar Sephora'nındır.</p>
+      <p data-lang="en">Structure adapts to Sephora's global preference: Master Franchise / Exclusive Distribution, or JV (Chalhoub model). Azra is ready for either; the decision is Sephora's.</p>
+      <span class="strat-tag">
+        <span data-lang="tr" class="active-lang">M2–M3 · ANLAŞMA</span>
+        <span data-lang="en">M2–M3 · AGREEMENT</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- GANTT -->
+<section id="gantt">
+  <div class="section-head">
+    <div class="section-num">
+      <span data-lang="tr" class="active-lang">05 — Yol Haritası</span>
+      <span data-lang="en">05 — Roadmap</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="tr" class="active-lang">İran lansmanının <em>aydan aya</em> 24 ayı.</span>
+      <span data-lang="en">A <em>month-by-month</em> 24-month Iran launch.</span>
+    </h2>
+  </div>
+
+  <div class="gantt-wrap">
+    <div class="gantt-legend">
+      <div><span class="swatch legend-legal"></span><span data-lang="tr" class="active-lang">Yasal & Kurumsal</span><span data-lang="en">Legal & Corporate</span></div>
+      <div><span class="swatch legend-product"></span><span data-lang="tr" class="active-lang">Ürün Tescil & Lojistik</span><span data-lang="en">Product Registration & Logistics</span></div>
+      <div><span class="swatch legend-retail"></span><span data-lang="tr" class="active-lang">Mağaza & Perakende</span><span data-lang="en">Store & Retail</span></div>
+      <div><span class="swatch legend-digital"></span><span data-lang="tr" class="active-lang">Dijital & E-Ticaret</span><span data-lang="en">Digital & E-Commerce</span></div>
+      <div><span class="swatch legend-team"></span><span data-lang="tr" class="active-lang">Ekip & Eğitim</span><span data-lang="en">Team & Training</span></div>
+      <div><span class="swatch legend-mkt"></span><span data-lang="tr" class="active-lang">Pazarlama & Lansman</span><span data-lang="en">Marketing & Launch</span></div>
+    </div>
+
+    <div class="gantt-inner" id="ganttBody">
+      <div class="gantt-row header">
+        <div class="task-cell"><span data-lang="tr" class="active-lang">İŞ KIRILIMI</span><span data-lang="en">WORK BREAKDOWN</span></div>
+        <div class="month-cell year-mark">M1</div>
+        <div class="month-cell">M2</div>
+        <div class="month-cell q-mark">M3</div>
+        <div class="month-cell">M4</div>
+        <div class="month-cell">M5</div>
+        <div class="month-cell q-mark">M6</div>
+        <div class="month-cell">M7</div>
+        <div class="month-cell">M8</div>
+        <div class="month-cell q-mark">M9</div>
+        <div class="month-cell">M10</div>
+        <div class="month-cell">M11</div>
+        <div class="month-cell year-mark q-mark">Y1</div>
+        <div class="month-cell">M13</div>
+        <div class="month-cell">M14</div>
+        <div class="month-cell q-mark">M15</div>
+        <div class="month-cell">M16</div>
+        <div class="month-cell">M17</div>
+        <div class="month-cell q-mark">M18</div>
+        <div class="month-cell">M19</div>
+        <div class="month-cell">M20</div>
+        <div class="month-cell q-mark">M21</div>
+        <div class="month-cell">M22</div>
+        <div class="month-cell">M23</div>
+        <div class="month-cell year-mark q-mark">Y2</div>
+      </div>
+    </div>
+
+    <div class="gantt-milestones" id="msRow">
+      <div class="ms-label">
+        <span data-lang="tr" class="active-lang">KİLOMETRE TAŞLARI</span>
+        <span data-lang="en">MILESTONES</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORE PLAN -->
+<section class="alt" id="stores">
+  <div class="section-head">
+    <div class="section-num">
+      <span data-lang="tr" class="active-lang">06 — Mağaza Planı</span>
+      <span data-lang="en">06 — Store Plan</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="tr" class="active-lang">Tahran'da başla, <em>İran'a yayıl</em>.</span>
+      <span data-lang="en">Start in Tehran, <em>scale across Iran</em>.</span>
+    </h2>
+  </div>
+
+  <div class="stores-grid">
+    <div class="store-card year1">
+      <div class="store-when">
+        <span data-lang="tr" class="active-lang">YIL 1 · M9–M12</span>
+        <span data-lang="en">YEAR 1 · M9–M12</span>
+      </div>
+      <h4 data-lang="tr" class="active-lang">Pilot Faz · Tahran</h4>
+      <h4 data-lang="en">Pilot Phase · Tehran</h4>
+      <div class="store-count">
+        <span data-lang="tr" class="active-lang">2 mağaza · ortalama 500 m²</span>
+        <span data-lang="en">2 stores · ~500 m² average</span>
+      </div>
+      <ul class="store-list">
+        <li>
+          <span class="month">M9</span>
+          <span class="city">Tehran Flagship<span class="loc">Sam Center / Tiraje Mall</span></span>
+          <span class="size">600 m²</span>
+        </li>
+        <li>
+          <span class="month">M12</span>
+          <span class="city">Tehran #2<span class="loc">Palladium / Kourosh</span></span>
+          <span class="size">450 m²</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="store-card year2">
+      <div class="store-when">
+        <span data-lang="tr" class="active-lang">YIL 2 · M13–M24</span>
+        <span data-lang="en">YEAR 2 · M13–M24</span>
+      </div>
+      <h4 data-lang="tr" class="active-lang">Ulusal Yayılım · 5 şehir</h4>
+      <h4 data-lang="en">National Rollout · 5 cities</h4>
+      <div class="store-count">
+        <span data-lang="tr" class="active-lang">+10 mağaza · toplam 12</span>
+        <span data-lang="en">+10 stores · total 12</span>
+      </div>
+      <ul class="store-list">
+        <li><span class="month">M14</span><span class="city">Tehran #3<span class="loc">Bam Land</span></span><span class="size">420 m²</span></li>
+        <li><span class="month">M15</span><span class="city">Isfahan<span class="loc">City Center Mall</span></span><span class="size">350 m²</span></li>
+        <li><span class="month">M16</span><span class="city">Shiraz<span class="loc">Persian Gulf Complex</span></span><span class="size">350 m²</span></li>
+        <li><span class="month">M17</span><span class="city">Mashhad<span class="loc">Almas-e Sharq</span></span><span class="size">380 m²</span></li>
+        <li><span class="month">M18</span><span class="city">Tabriz<span class="loc">Laleh Park</span></span><span class="size">320 m²</span></li>
+        <li><span class="month">M19</span><span class="city">Karaj<span class="loc">Mehr-e Iran</span></span><span class="size">320 m²</span></li>
+        <li><span class="month">M21</span><span class="city">Tehran #4<span class="loc">Iran Mall</span></span><span class="size">450 m²</span></li>
+        <li><span class="month">M22</span><span class="city">Isfahan #2<span class="loc">Park Mall</span></span><span class="size">300 m²</span></li>
+        <li><span class="month">M23</span><span class="city">Ahvaz<span class="loc">Persian Gulf Mall</span></span><span class="size">280 m²</span></li>
+        <li><span class="month">M24</span><span class="city">Tehran #5<span class="loc">Opal Center</span></span><span class="size">400 m²</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="section-head">
+    <div class="section-num">
+      <span data-lang="tr" class="active-lang">07 — Ekip & Eğitim</span>
+      <span data-lang="en">07 — Team & Training</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="tr" class="active-lang">Tarhan Koleji omurgalı <em>Sephora Akademisi</em>.</span>
+      <span data-lang="en">A <em>Sephora Academy</em> on Tarhan Koleji's spine.</span>
+    </h2>
+  </div>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-num">~150<sup>+</sup></div>
+      <div class="team-role">
+        <span data-lang="tr" class="active-lang">Toplam Kadro · Y2 Sonu</span>
+        <span data-lang="en">Total Headcount · End of Y2</span>
+      </div>
+      <h4 data-lang="tr" class="active-lang">İran Sephora Operasyonu</h4>
+      <h4 data-lang="en">Iran Sephora Operation</h4>
+      <p data-lang="tr" class="active-lang">12 mağazada Beauty Advisor (~75), MUA (~20), kasiyer (~18) + Tahran merkez ofis: pazarlama, e-ticaret, lojistik, IK, finans (~30) + ülke yönetimi (8).</p>
+      <p data-lang="en">Across 12 stores: Beauty Advisors (~75), MUAs (~20), cashiers (~18) + Tehran HQ: marketing, e-com, logistics, HR, finance (~30) + country leadership (8).</p>
+    </div>
+
+    <div class="team-card">
+      <div class="team-num">8</div>
+      <div class="team-role">
+        <span data-lang="tr" class="active-lang">Üst Düzey Yönetim</span>
+        <span data-lang="en">Senior Leadership</span>
+      </div>
+      <h4 data-lang="tr" class="active-lang">Anahtar Pozisyonlar</h4>
+      <h4 data-lang="en">Key Positions</h4>
+      <p data-lang="tr" class="active-lang">Ülke Müdürü, Ticari Direktör, Operasyon Direktörü, Pazarlama Müdürü, IK Müdürü, Finans Müdürü, Mağaza Operasyon Müdürü, Eğitim Direktörü. Hedef: Sephora MENA / Lancôme TR'den deneyimli profil transferi.</p>
+      <p data-lang="en">Country Manager, Commercial Director, Operations Director, Marketing Manager, HR Manager, Finance Manager, Store Operations Manager, Training Director. Target hires from Sephora MENA / Lancôme TR.</p>
+    </div>
+
+    <div class="team-card">
+      <div class="team-num">6 hf.</div>
+      <div class="team-role">
+        <span data-lang="tr" class="active-lang">İstanbul Eğitim Programı</span>
+        <span data-lang="en">Istanbul Training Program</span>
+      </div>
+      <h4 data-lang="tr" class="active-lang">Sephora Akademisi</h4>
+      <h4 data-lang="en">Sephora Academy</h4>
+      <p data-lang="tr" class="active-lang">Tarhan Koleji altyapısı üzerinde, Sephora'nın global eğitim müfredatını yerelleştiren akademi. İran ekibinin ilk dalgası 6 hafta İstanbul'da yatılı eğitim alır (vize + konaklama Azra finansmanı).</p>
+      <p data-lang="en">Built on Tarhan Koleji's infrastructure, the academy localizes Sephora's global training curriculum. Iran's first wave attends a 6-week residential program in Istanbul (visa + lodging financed by Azra).</p>
+    </div>
+  </div>
+
+  <div class="academy-frame">
+    <h4 data-lang="tr" class="active-lang">Tarhan Koleji'nden Sephora Akademisi'ne</h4>
+    <h4 data-lang="en">From Tarhan Koleji to Sephora Academy</h4>
+    <p data-lang="tr" class="active-lang">Holdingin eğitim kolu — Tarhan Koleji — K-12, mesleki eğitim ve online platform deneyimine sahip. Bu mevcut altyapı, Sephora Akademisi'ni hızlı ve düşük marjinal maliyetle kurmamızı sağlar. Beauty Advisor ve MUA sertifika programları, akademi kapsamında sürekli olarak Türkiye ve İran ekiplerini besler.</p>
+    <p data-lang="en">The holding's education arm — Tarhan Koleji — has experience in K-12, vocational and online learning. This existing infrastructure lets us stand up the Sephora Academy quickly and at low marginal cost. Beauty Advisor and MUA certification programs continuously feed both Turkey and Iran teams.</p>
+  </div>
+</section>
+
+<!-- FINANCIAL -->
+<section class="alt" id="financial">
+  <div class="section-head">
+    <div class="section-num">
+      <span data-lang="tr" class="active-lang">08 — Mali Çerçeve</span>
+      <span data-lang="en">08 — Financial Framework</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="tr" class="active-lang">Üç senaryo, <em>Sephora'nın iştahına</em> göre uyarlanır.</span>
+      <span data-lang="en">Three scenarios, <em>tuned to Sephora's appetite</em>.</span>
+    </h2>
+  </div>
+
+  <div class="scenarios">
+    <div class="scenario">
+      <div class="sc-tier">
+        <span data-lang="tr" class="active-lang">SENARYO A · KONSERVATİF</span>
+        <span data-lang="en">SCENARIO A · CONSERVATIVE</span>
+      </div>
+      <h4 data-lang="tr" class="active-lang">Pilot Yaklaşımı</h4>
+      <h4 data-lang="en">Pilot Approach</h4>
+      <div class="sc-range">
+        <span data-lang="tr" class="active-lang">3 mağaza · 24 ay</span>
+        <span data-lang="en">3 stores · 24 months</span>
+      </div>
+      <div class="sc-amount">$5–8M</div>
+      <div class="sc-currency">USD · CAPEX + OPEX 24M</div>
+      <ul>
+        <li><span data-lang="tr" class="active-lang">Mağaza</span><span data-lang="en">Stores</span><span>3</span></li>
+        <li><span data-lang="tr" class="active-lang">Şehir</span><span data-lang="en">Cities</span><span>1 (Tehran)</span></li>
+        <li><span data-lang="tr" class="active-lang">SKU</span><span data-lang="en">SKUs</span><span>~150</span></li>
+        <li><span data-lang="tr" class="active-lang">E-Ticaret</span><span data-lang="en">E-Commerce</span><span><span data-lang="tr" class="active-lang">Faz 2'de</span><span data-lang="en">Phase 2</span></span></li>
+        <li><span data-lang="tr" class="active-lang">Risk</span><span data-lang="en">Risk</span><span><span data-lang="tr" class="active-lang">Düşük</span><span data-lang="en">Low</span></span></li>
+      </ul>
+    </div>
+
+    <div class="scenario recommended">
+      <div class="sc-tier">
+        <span data-lang="tr" class="active-lang">SENARYO B · ORTA</span>
+        <span data-lang="en">SCENARIO B · BALANCED</span>
+      </div>
+      <h4 data-lang="tr" class="active-lang">Dengeli Yayılım</h4>
+      <h4 data-lang="en">Balanced Rollout</h4>
+      <div class="sc-range">
+        <span data-lang="tr" class="active-lang">12 mağaza · 24 ay</span>
+        <span data-lang="en">12 stores · 24 months</span>
+      </div>
+      <div class="sc-amount">$15–20M</div>
+      <div class="sc-currency">USD · CAPEX + OPEX 24M</div>
+      <ul>
+        <li><span data-lang="tr" class="active-lang">Mağaza</span><span data-lang="en">Stores</span><span>12</span></li>
+        <li><span data-lang="tr" class="active-lang">Şehir</span><span data-lang="en">Cities</span><span>6</span></li>
+        <li><span data-lang="tr" class="active-lang">SKU</span><span data-lang="en">SKUs</span><span>~400</span></li>
+        <li><span data-lang="tr" class="active-lang">E-Ticaret</span><span data-lang="en">E-Commerce</span><span>M11 ✓</span></li>
+        <li><span data-lang="tr" class="active-lang">Risk</span><span data-lang="en">Risk</span><span><span data-lang="tr" class="active-lang">Orta</span><span data-lang="en">Medium</span></span></li>
+      </ul>
+    </div>
+
+    <div class="scenario">
+      <div class="sc-tier">
+        <span data-lang="tr" class="active-lang">SENARYO C · AGRESİF</span>
+        <span data-lang="en">SCENARIO C · AGGRESSIVE</span>
+      </div>
+      <h4 data-lang="tr" class="active-lang">Hızlı Pazar Liderliği</h4>
+      <h4 data-lang="en">Fast Market Leadership</h4>
+      <div class="sc-range">
+        <span data-lang="tr" class="active-lang">18 mağaza · 24 ay</span>
+        <span data-lang="en">18 stores · 24 months</span>
+      </div>
+      <div class="sc-amount">$25–30M</div>
+      <div class="sc-currency">USD · CAPEX + OPEX 24M</div>
+      <ul>
+        <li><span data-lang="tr" class="active-lang">Mağaza</span><span data-lang="en">Stores</span><span>18</span></li>
+        <li><span data-lang="tr" class="active-lang">Şehir</span><span data-lang="en">Cities</span><span>8+</span></li>
+        <li><span data-lang="tr" class="active-lang">SKU</span><span data-lang="en">SKUs</span><span>~600</span></li>
+        <li><span data-lang="tr" class="active-lang">E-Ticaret</span><span data-lang="en">E-Commerce</span><span>M9 ✓ + App</span></li>
+        <li><span data-lang="tr" class="active-lang">Risk</span><span data-lang="en">Risk</span><span><span data-lang="tr" class="active-lang">Yüksek-getiri</span><span data-lang="en">High-return</span></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="fin-note">
+    <p>
+      <span data-lang="tr" class="active-lang">"Bu rakamlar Sephora ile yapılacak ilk strateji görüşmesinin ardından detaylı CAPEX/OPEX modeline dönüştürülür. Azra holding bilançosu, Senaryo B'nin ilk 18 ayını iç finansman + Türk bankası proje finansmanı ile karşılayabilir."</span>
+      <span data-lang="en">"These ranges convert into a detailed CAPEX/OPEX model after the first strategy meeting with Sephora. Azra's holding balance sheet can fund Scenario B's first 18 months through internal capital + Turkish bank project financing."</span>
+    </p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="content">
+    <h2 data-lang="tr" class="active-lang">
+      Sephora'nın <em>henüz olmadığı</em> yere<br>
+      birlikte ulaşalım.
+    </h2>
+    <h2 data-lang="en">
+      Let's reach where Sephora <em>isn't</em><br>
+      yet — together.
+    </h2>
+    <p data-lang="tr" class="active-lang">
+      Bu sunum, Sephora bayilik/distribütörlük ekibi için Azra Group'un İran ve komşu Müslüman pazarlardaki giriş kapasitesini, kanıtlanmış track record'unu ve stratejik vizyonunu özetler. Detaylı mali model, mağaza-bazlı yatırım planı ve hukuki takvim, ilk görüşme sonrası talep üzerine paylaşılır.
+    </p>
+    <p data-lang="en">
+      This brief outlines Azra Group's entry capacity, proven track record and strategic vision for Iran and adjacent Muslim-majority markets, prepared for Sephora's franchise/distribution team. Detailed financial models, per-store investment plans and legal timelines available on request after first conversation.
+    </p>
+    <div class="cta-buttons">
+      <a class="btn primary" href="mailto:partnerships@azra.tr">
+        <span data-lang="tr" class="active-lang">Görüşme Talep Et →</span>
+        <span data-lang="en">Request a Meeting →</span>
+      </a>
+      <a class="btn ghost" href="https://azra.tr" target="_blank">azra.tr ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <img alt="Azra Group" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHEAAABuCAYAAAAQ/vyeAAAQAElEQVR4Aex9CWBV1bX2OvsMd8jN5SZMMUQMSBGRoiIioiKxFJWC2lZo+7Q+x6LiRC3l+fh5xufPby3labVoHVFrJ7Rq0SLFAQRkBiNgBIwQIIQQQgjJHc+wz/+tk9x4A4EkCGj7ej3r7uHscX17rb322jco6F+ff3gO/AvEf3gIif4F4r9A/CfgwD/BFP4lif8C8Z+AA/8EU/iHksTi4mIxZ84cg8N/At4fsyl87UEsXrhQe3bZstw5a5f1OeuKK/r5T+qdRxdf/LUf9zFDqB0Nfa2Z8dSSNT27qnSV7VhjhOKPGKpav89uqC4uKrLbMbf/NUVaAfGrmXsxq8m/Lcwrfndx///7warh/71w+a279++7SpC6I6T73tg4d+660WeeWXFDUVEyc4Tjxo0zzjvvvHD//v3zRowY0WfUqFEDBg48Z1CPHj2G9uzZ88LTTjvtEtBl/U/rf9mAfgNGfaNXr+Hdc3OH9j755MHfuuiigajTD5/CgQMHduN2kNYy2/9HiH/lIPL+NuWdJT33+nK/d8CWN/sDOYNcW9X85F9xUn7nZ28bPnzVtUOH1qOcTDN0xPUj/KNHj8479dRTh3300Uc3V1dX3x+LxWZu27bt8c8///ypurq9z6iqOtvn881OxhPPmcnkU4lk/VOxRN0zrkLPBbOzZ6ua+syevXufqqysnJVKpR5vaGiYUVtbO3XHjh03n3nmmReOGDEijxdIus+vc/iVgli8cY5x4NuXjay1Ug+7unpObm7u0uSB2FxnSf3inxedXTJh8OB4JvPA1NAF5503dN+qqp9v3Vo2m0jOdhxnOgC7XdO08YiPQvmhoLOQ1w95fQxdL9RUraem6h65rtsH9fo5rnuW5VhDksnkCNM0R1uW9UOAeYdpmg/V19fPLi8vf7K0tPSe888/f8jll18eRpsC9LV8vpKBFb+5JnjbwqVDd+3qPD0WTdyWk5X1x265gQenXXT2ouLRLHVf7HkAzoBUFAwceMbty5cvfaWiqvL1umjDtGQ8fpljWX2llBGA50eo6bouSLpCVzUhyKVUIk6OtMl2TBCHNgFEUpTGaVuWLVQkDE1DHdVAPIg2IkCqj6K4V8XjDdN3Ve786yelG17v16/vfwwZcvbggVC7GM/XSuU2zgajPhEPVKL4yTtrelZ10m60pDpT82X1CfuDjwcX/v2t4qFD6w8ewwUXnJ2/YUPJ1Tt3ls+sO3BghmH4LiOF8oCPBtC84gJweZHj8qVoqlDzQJdEo9EHq6trf2dZqelQwVdDQnN5Psel2w42esJA5Anvu3T8Ja5PezhlObfpuvp3J5W4L7Rn+1K8a97vePxY6aHzzjnnwoptlbPi0fjDqZR5lWM7Qag+si2bFKEQ2EuuULh4O4m7YDq4OOdl0hfvFUUhXiRMGK9QNeoHlXttbe2+mbt3V856//13Lhs7dmyQvuLPcQcRAIlbFy4v3HHx2Lv27N//TMIyexrCur97Vfkvnr60aFPx+PFmmgewMI2zzjp32K5du2buqax8xW/4roJ6KwAZ+JBu6KTpGilKR8BLt85TZUqn2w4d6RBLPBOXlo5ktezPCgXzpeuM31Ze/tSmLaUzWc2yZYsyHesAFY7Fc1w7ZQDrR44dYtrKA04idV+OL7AmEvJNO4kSb2WCh4mI7qee2i0RNccf2FfzaydlXod9Ks91XG8Pw3vvEYqgg8l7kfFlmc1rgmzbItX7T8O38Ei4HKqkKZpHvDiwN5JpWqRB1DKa8qLSlZRJUK3eGBRFgYCKAjNl3lhVvXfW7j27bu/Ro0cfnrNX8QR+iePVF0+mfuRlQ+qSqZkuiSuy9cCqXNea2iVeuxiH9RZnPZzTevoc615XsR4UrjNIuOR3FCILo8ORoN1DBGMhrQZJT4Ic0jTdi7NEpRtxAYrt2ADN9IhVtOu6xHVNy0R56RXl9MELhtPeS3xxvIkMQWIwaLJhqDOffPJJ7AYjNBQ5YQ/Y1I6+OlgErjL/vgsvviTmyF8npdlXU93nFSt120Mjz9sCAO10c5it1qt/ryH7DlT/XnPpp6rjFKqKK1xFUkolSoIVEmCmy7cR2gAjmkgmahxHbpWOU5JKJhfF4vE52EefR93nVVX9rapqT0PinodafkkVYr5Cyiqo61JdN6qI3HpYunEbH7SFKu17ALgA5RIpY4LB4B+3bNkyfeDAgQOwkDEDOvgj2OLmvTQ/Pz+IMqFZs2aFnnrqqSBvJyjcYUw6XAGdHPEphp+z2nFuTAjlgRSZEV9AfTCgm79+fPTQisyKhWcVRjbsXDsmFmt4IJwVGqKpiiZUxSvCwDltjswFaFQHZpeg0qsIfwOa5tP1Sfl53Sd0O6nHDbpfuaFbp/CdnfO63VuQk3NvpGvXKTndukzOioTvNYKBSVk+/ZZgtv+G3EjOTVlZWXcbqjFFVdXpaO9ZqNhFtmNXQJWaSLf64J2Xnw69BFE3TdNur6urm/ncc89d17t3757du3fvBq/R4FNOOeV7OTk5Ny9ZsuSeTZs23QfAp/31r3994E9/+tP9zzzzzFQ4Le7o1avXv51++umDCgsL/U3ttRm0yao2W8gocPvChaF6i26Uiv9+TdcGGMKZfUqB/fRjF120I6MYYfUZTtT5N58aftjQ/COlo2iOq5AUKtkqhiQEGW4juY6Dvc0mE3sdpIziibjEwbxSSjnXceXUQCBwE+hOeHCm/fKXv3zi32+88Q8r1qx5d/Xq1SXl5VXl6z//vLqkpKRuUUlJ3cqVK+uZOI2DfO36srKK0tKy0nXr16/YWFo655rrr38aY/sfVVXvMwzfhGAgMFEo4lksjlJFKC3AZBWNfJxDHUIZL4QAEySZUD+EdyNB0wHmIwD1cRxRnguHw49feOGFD1966aX3X3311T+bMGHCTydOnHjHtddeexck86eYwwMFBQUzE4kEe5x+8r3Lv1eQybfDxcGxw73qWP7PFyzNJzXr/gZb3pe0Un7LTr3ks1MvF/cqarH/DRs2rNubf/rLT+2kfFixtb6qq3oqR5JLTMDS61i4RCopZOgGGYZBqqbWqkJbBoZN63Xaqd/u1avPNTu373zi008/XQdAqp544onoeFi6AKFxU/Na6dgX173hhhuS8NbUbd26dcvmzWVzTzml1905PTp/O9pQ/yNb2m/E4tEdOGaYEpaqK7F5+/2kqqrXEQMIwLxFBxUtOnfunAfQvgewxr/00ksDIXH5kM7IzJkzg1OmTPEj3/jRj35k3HTjTcbU/5zqf+yxx0Io0+2//uu/BsFOmPHRpo+eY/+v1/gRvsQR3rX7FUtgrZ+ujynu9cLQwrZjvR9U9Sc7f7CqMrMR6Pzcuurqa2vqaieqkkKKiVUMsDLLZMahzgir0gbTdgC8h3XdmOjzBf5nyXtLShctWpTMLHu84ujH/ujDjypvv/2eN/SswN3Zoewpuq69qghRC20gIW1e17zYoB7JD1BhpdLIkSPpzjvvpP/+7/+m6667jgYPHkwnn3yyZzhxHUVRPPC5DhYoKULx6nbv1p0ALP3nf/6nAYfCcEj3VIS5dITPlwbx+tmz/fXC/V5UcSc6ittFKm5Zt2Do4cfff38Tr+x034gLO5b4t1g8dSfUYL5fN8iA9Zh+31qoChFVFGV+dnbo7mAw9AQkZD3ohIB38Hgwfrm1dOsOny/4WlZW+F5VaFNtx1kDPysCh+Bsp0hOhH7wgx94wP3Hf/wHXXDBBdS9e3fSdZ3gYCeUJey9HliYl6d6k8mk9w4LlWBwkaqp3vtzzjmHoGr92EtH7N279yoIgHHwmNLpLwXiT958M6gWnnqVTdr9Nql5rqLucC05LfzBu6uw8cl0J2PPOSf4p5deuspy7PsNQy/EHibwIU0RJKAyeUJpwn6HsyElMakt2Acn9uxZeNOnn26ZC5UZRXvNbSL+lTwYhwmqggS9DCXySjAQivbp0xfSdj09+shj9MMf/pBgzBDPj4Hl+aQHyqqW05CuZonEHNOvvTAeb/T5c92zzz47fsUVV1QdOHBgHBZAT69AK1+ilbx2Z9ldI4OShn63LbSe5Or1QlFfcFPK+7xq043wMeKz2toLTdO6z3Fkl3Q+qxSmdDodYqLxZDL+VlZWcOItt9z68rJly6rxToK+Nk9xMYmqqqrRnXNyvgsjJXTXXXfR2LFjqVu3bp5E8oJkoHiP5HhHBo75e8WhqrmtetzsrIeK7qmqal+8aBWvVjNRuM3npmXzcxOqb3LC0AbZqipU6S6lmHzuuRUL6jIrf/bZZwNqU7HJDtFZvDqlRKypgFSI0oZMY5YbNQzj0e7d86f26NFzUeZiaHz/tfjOnTUr9/pwOPvhK6+8cvD3v/99jSWPR5ZKpTyjhgHIXKAcTxOXOxKx6jVhieO4QTg7Rl544YVBWAxxSLAGgWgVr1Yzj9QJv7tm3rywrWTf7rpyNJm2YdjuDt2xH/rdtwfvoOLiZqkZiGsbk+wHg1lZw4Wuaaqhk6IIqEuXHHK9kNsDlDjzuVsRv3/YsAsf/Pjjj7ewQYH01+YBAzVYiv1PPvmk6fn5PWbeetuEwstHX27k5+d7exurP9dtnFM6TA8+nWZwAUg6u9Vw586d9Pe//11CuqMzZszYgvPkyyeddNKPsb/OPxxPOg5icbHAzfgQRdI1fpu0QMyq7ZSwnuuzL7ymxajy84NQi9eGDP8oxZZwTSnNoLmuRLyZbNRbgb3yfiH0Z7HyvhLDBWM47MPWIW78R0UikRkDBw669pZbJkRGXHwJZQWzvfMrA4M9ywOTgUo35AJUlk4OM4nfs6HDqpaJVS8MNnrrb2/RI488UgvwVmAbeRRqdAIWyYNr167d9Morr7Q4p3IbaeowiLefe3E36YgfKNItFI5jBhQ5v7NKfygePyCzE9EnHBwSS8auUVwycJwAaLxKG4GDXU4uzlhMtnRKhdAnh0KdXisrKzvkTjE90K8qhFXYE+O6F4bMzDFjxoy6+eabQ9AwvF8RM7+1caUBS79Lpzlk0FhdcsjpWCxGDOCTTz5pT58+fePChQunY1FMhPE3A2fgVQCw0dJJN9ZK2CEQsUcJGdSvdlXlexiEX5Dc5Perz/iXvlee2TbUTuH+aPzepOsOTO95wiVi8vbBpsLIqgrqxgx4LNo12KZqJyrQOnXqNHjPnj2zzzzzzJ/fc889/UaOHKmx8cIDwPnVOzpwPE0MSjqeGXI+SyiHDDx4R1lZWVRXV0dz586le++9Nz5nzpwXVFUdi63kUUhhCRYOL2iZ2c7h4h0CseKyi/NNTb3BcUWEW1dduUDRG9YBXE56fYwbN85Imvb3hCouhJvJ88Z4Lw76woRqNU193nbFgsz6BxX7qpL+rl27jgqFQg9DlQ7HnLQ+ffp4Y2H1yBEGhVUox9OEOaWjhw0hZQQjxZO+P/7xj6w+6ZNPPqkFuH9esWJFOSo28xLxdj3tBnHcxo1GvIGuilvOQIckDnhKwa0MZAAAEABJREFUrXDkXx4fOppXTHNnFRV7e+p+9ceKmQpbB6KkwAcKGfTes1Fj6AZ5FphlLiYhZn8O36b38mv0BbOef2g1BV6W4bfeert2yim9wHgHw9VI0wxSBQw0OAV9vgAlUiYlTcsjB2onkbKQ10jxpOmdBxk4qGNikBl8SDf9/ve/pxdffJFYnUIqQ3CO5x4tC9oHYnGxyKqLDlKMwE0Kwdcp4Qx23Tdq9u5dRxmffBzqt1V9fjfAGhgKZIksnx9TVTJKENU31Mv6A/UbT/3GN6YAwLIWL7/iBKQtfOqpp14FKfw9pG84/KhaR4bEIB1cnvc/Bo4P8QZ8wLz//eIXvyAYKlgYFrFVC8mMbN++fRy8NEf1U492gXj7xRcHE7YcRZrRm40UHClqNNv92ytwOKcHzSa4r752sJtMXWIoCqmqTi4JUhTFI2r62LZTo2riGRxq+UjRlPvVBwAuD56R6zCSB4uKigqHnT/Mkxykj/hI6XrlGEA3w+pOV+KzsQsrlWnDhg30u9/9jj788EPPKGKXG++t2HsZzAsB9GDUE6AOPe2qYPuyC3yG/1vkuCE2TBySlUJapZk9lZeXhBzXudwQak+VFFIBnmVblLJMb5LEH5dsw/AtDefkzD3cmYeLnWjCAvRjr5sMo2UKbh36w4ARwawgYU886qG4AJQr++EQh6R5avNvf/sbLViwgGB5kgGpVFXVC1laUa4bFtH3r7nmmhB18NMmiDA6hCblGCj6QZBC4ShYe6q9KTubajL7UuxQ31RD6irsGSGJvQFM8V67WIWqrpGAYzdmJsp0VXkGB9gW94tewa/mS4MUDFq3bt2T3/zmN+/CVVbBZZdeJqSUxATJIAEOqaqC0UncqMSw96XIxY1DPJUES1LI/+LhubpY5R7xvDFn05ZYyDb9z68fpVdf+4utKIpk6eR9kolr27bNC10A2DG4MB6CPPSK73Y+bRZuuHhMrmPJ70jbDbquTbZrR1WhfLyvgaLpPoqJRCyZHB7OCvXmPJnhWtN0nfi3K9FYTKbi8flGMLgGZSToK31Y+nAGHAlvyAPf+MY3xn/3u9/VkG4xJjDcS7MkMUC8f3EGJIY0AMTxw5EQqveKLViWvrfnzauxTHMe6m7ithg4VW0s4xVs/MrDu0sLCwv5F+eNOe34PiKILIUJJz4irriDbUMTcWmTdO1yv6oufSHjD1v+evbZeY6U34daMDL7VBRBzAhXuqQKUREOhZ7asmVLbWaZryAucN9XUFpaegeY+OuLL754FFRYkK+MMP4Ww2FpZABZYlgq2Z/J57pnnnnGfOml39lsZbqQOIn5MXFlTjOpAFni4njDhvX06l9ei4ZzOj1Y0KPg3s6dO89CPybzBXYBV8kkP/Ivw9FsUGZmW3FxpALhUeMi9abzfVf1hSRLFNSM68gVPsvalFFPRA8cGKqp6gChtmzOdSUJRSF8JbPD2XPKKyu3oJ4EfWUPjg/9AN5M7H8PjB07tu/w4cMNBpCPAAKLTmLM6cEpiuJFow1RgpqTcIfV/OW11+ZD/fKBPF5Xt9977wJIJqfJt69qMGpdQRUVFdgD34nW7K1+osf4k55AvbIBAwb8AQtihRDiED4oisKqvB8WyzgWIK/xdny15PpBFTZHq3tTIDjAJog9BhXw+WVQVddGPvig+WxYSGTE4vHzwYSQifPSQU2Q7diUiMcrErHUO3h3yMCRd8IeHCEK4P+89/TTTx+De78gq0+2DlnSTJz3eBHCwCDMxfOD8ju4vWj2C7PN1157bePmzZsfrKs/cD8Wph8qONS9ex72Mgaa2SgQd2HAJKke52Nuc82adXLZh0tLSDp/XFS8yOaJvvHGG3Xwh/5RSllrmiYhbEEAV4PhMxL9deHy7SHuvdVy4+bMMVK6OsBWVKhKFJNEuqQkjhYlWCVINVYLDxwY1lT9LMd22ExuzGz6ZjUKlSJDWdkbFV3JlN6mEicsEDiD9QPT7odLcPx5550XBCMphasjVmm8P/G+zSGno9Eo1dbW0ptvvsmH8qoNGza8AFDYn/l8digUiSXio/AR2dmNhiRLYZp4Iei6Rju2b6d58+bFU2bqHU3r3uI4deDAgUU4XpRg9hJ0yIPFk79v3752GzjikBaaMgrCBaGkqp/nCB2brCDdEYTzYXnvcF6LAzrkv49QyLt1hkqlzI+CFy458WQqugRMrMp8d6LikDYDxsuo/fv3PwWD4XocH0JQqZ6kQa16UsAAMIC8/4F5tGrVKvnss8/W4Tw3F+D9CJ6bSbjFWJqTk+MP+ALjhpw7pDcvAmg/TENmEFEw4INEOtgH/0I1e/cszc3Le6msbGWz5kJhlvStsIr/AkOpjtOZBJVKkEQ/JPLSs846K5z57nDxw4JIYcqVqugPixkK3huoxFGjjFLVzQOCRGr7G+qgUZUIb+R2elOgLz5wKdUaft9GeCjML3JPTAwH+BDAGwOmPARVOgwWqcYAZuN8xGoMK94DkUfDQDKIAJBgTWL7rnwEavXe8vLyxZBI7yahoaGhv67rw+BPNQACgdFcNYMkYWuhjZ98Qhs3flzvD2a9mBeJVGQU8KIwqkyo7RWQxhYC4b3EF7SBgJYYiL0zD8k2n8OCqJDWLZVI9lQVif1ekqNJW3fNLcUZfy+P/cLAnl6gqAqsqoOb8oCnAwcayi0r2UKdtDmqY1CAAQQo34O0PTBo0KCBMGA0SBKkxPWAgxR4NwlQsQRgqLKykl5//XV73rx5m1DvfliIvwGzmck8ER6RQP63+vXtU/iNU3uRrioUra8jlpxkMkGN7WiUSLARtIj219at6n1KwbuLFjXuhdxAJsFXurVz59wV0rUlKZLSJMBG2zYhrYGeUOuehqM2PqjSegnbdvsLEgVE6Q6cJLTj55mlsdHD1yd6Ic8PAoNQliPNRKRqtN7v78S/k8nIPX5RaAdx7rnn5gGYh6FGf33ppZcOwEFeQCN4YGGVg9EJglQRJMHb+wAczZ49e8tHH330S1it38G8/gAAWxyF0GY3SPBVffv2DUKKvIXAkhiLRb24qjaycvfuKlq5cnX1/tr9j0OCWzhEMmf99ttv11dU7forFkHzeTvzPZHbDemzWHsgPOLT2HMrRSzbPl1XAEHTO0hcHG61FvtaVtcsA4OIKFAs1NrHde2sUNbms88+O9na62OdxxN++eWX+9XU1NyXl5d3HdKRM844gzp37uxJDKtQ3vtCoZAnOSUlJfK9996rX7x48TLkT8E+98iaNWtYaxyyGmGMDIpEIr379evnLQaWPFVVycHZmaWHw4aGA7R48UKzunr30kgktL6t+XWJdNkEvh7OewXtRqfgmAJBOXJLrYLIfxCTdJyBiqKidnORekGyxerUlSz+uXo3l1zhZpyvUMl7XCIzO7tTGRjpmdde5vH7Etj/LgFQ03HuuxESGILK8qSOGc7dYsF50rcdluPq1avl0qVL18EKnYn8ibi9eAvbQ6uSw6oZqu1SlAlBzRIA924g0BexVMJd5i2KvXtraP2GDbXhUOh19NdiwSN9yDNw4MAahWiF67q8Z5FQmnntlcW4CtFHxEsc4atlrXTB3Nwuik/vCYMkncNhVEq3jiNp2l25PSyEyEVnrbejKPUXXHDeFqi4Q1Z2uo1jEcICDfXo0WM01ONzsIKvgASGoPo8ZvPeJ6X0mA4gaNOmTfarr766A4f3xwD2ldgn/9+uXbtKDrd38fhQvz/mOOKCCy7wQEPaU6FeaNlkJlPUKZRN7y5YQJ9t2rwC/cwtLy9vU/uwsde1a5eFqlA9lQpecncesWBAhgpyc7PzvIwjfLXK/KpobSTp2iEbb2GdNlZXyHSEajYmGr8V0iHyShALqTHj4G+X4mrcqT84+1imAWBuLBb7IVTkdBziC3r16iUikYjXBTMlhbMgA4mjAn322WcEsLbAQHkQh/Xp77zzTiXSbWkJDWqzH9RzHi8MF/qPG+eQCW15NxE7tu/gG/okLOG/QbrbPef9++t3xOLRWglNJlQwnBtPk6sE4/Fk42E0nddKeFCtxhJW0sy1SQZTjtWYQSQVBsRyWoKoOLBO3Rb+0nSFpjDZQOSZ503pYxr06dMnXFdXdwdU2v0AZcBpp53GZyxPtTGDIT3EhMtnz202f/78LSj/AIybPwG8VlXnwQPE2TKERXBmQUFBuEuXRicKt50mXhzs5N6wcQNBnZcDxMUHt3GkNI48ddmhTjW6psOxI1sUVRQKNcTj3VpktpI4BESoPqGCKwocgBbuAoGfV80lsl0Vl1FeqvFLURQp4UxtTB36DX0ff/rpp9tUK4fWbDNH6927d18w8CHsUVNYAs844wyB8XgAIt87zHMrlmXRunXrbJz/ViF958SJE1+D5empL6Tb80Rs2+4PT4/BUi2hmjMrgVUUi8Y8NQ11vgjqnH8nk1nkiHGo3ijOq/wbG8njzywMoTeSsVgwM6+1+CEgciHd3ymiCFXwSxdiziTRIlFLPJJOElLmgngFHUxE0Ot4R/yCmz1WJAr7FF6YtFIzwjmR688+59xgn779SDP8JLCahWaQjR5NfEXjSS8/L78HXvn8Dol+f/jDH0YVFvYZOmrUdwaMGDGiC9TxkTQJ5eZ2zwuFOvXp2rW70DQf5qBiP1Q8Ild4rju41gh7YBSL5+1XXjn870NR+ZAHW4GpKBSV4DO/VBQsfY6AEBVQ4X5Ej/gwTocUSCTNIAbIe8Eh7zIzQoFQlBSqdd2mEWS+RByDyPvR2LGNOgjpL/OMGzfOANP75HTu/LNkLDUrP7/HZUOHDg3m5XWHya9B8uwWzbveoiNiyYHRI84eNGhAQf5J01xXPGmayRe3bfvs95s3lf1l377a33Xu3PX/nNn/zCHo45B/m6a6uqp3ly6d83JzctGWc8hZGFJEkGyJI0ipoigd9g8bhomBKyYGj6WH75aPwHn3iIuMix8CYjFyLcfxu8AFg0LKewTACjpSb9Fgti+7TnGpAmuntQGgolK4dnPpDy+/3PtntZAmog58AzQNzupwQcGpfcCoqbt3734lP/+kB885d3D/Ieeea2QFg6SqGixPGyBKMFkewmRWgWzoDBlyrjb6O2O6XHvtNT1/fO2P+35n9JiB3xkzevjFF48YP+CMAQ9a5Px17dqPXvztb5+5Nje3T7PPMpVKfhMAwoMW9FQ1D595w8RxdiJ88skn/Fdcy7p27dphp0Yi4W1RLVUcN9xEjkuiKXrYoNUCEvuIxErOAJHAHb+qOS1ATHVK1bsKlaF1bxAu6iCe+RipZOq2LZ9+ev2gQYP6FBe3PSCuDPD8cFT33LNn35jq6trJQjjPwRj5GfalgWjHOKVnT/L5fB5TpXQwNAlycaRwuHoLwq7gleW5BIMBwh5KeSfl0Un5J9FpfU8j7GHeXzSNHTM2D47u0eFwaKYQ9T9EfhDj0FCnXyg7JBzbIcu0vH4yO8DdH+3cubMGc1+JxRLNfNeROBfDFz8AABAASURBVOof0jbXV1wXksqxw1OrIJKimNK2JUxrRIVHQgg/uVows6nxI8Yng/7Ax0Ko9UrTQTU9GA65rCp0/sfw7ttTteepJ2d1vQNuqwsn3DCh/z333FN4109+0vPWW28tnDTpP/pMmDAB29OZQwoLT71+586KGZ+XlT9jmqlHcnNz7ul3Wr8L+/Xrj9v3k4TPFwBYLqVSFimK5kkg95OmdL/NaemShbMcS6zjSA94LgM1RUIIqGKdVNzCM7BwbItvXTKySySSc0siYQ+CkyA34A/0zOuex2rNK8d1mQgfRSi0ZcsWduHtgJW5ERZvmwxHtRYP9lH4ZFOGi3Gm200XUOBQhbHEqjad1WooDs4tRgbO+nWBYEDyJJFMP2FBIjed4BCWrO33W+/Dc/+ugKUqhMrZzcSDUoUQYERe1y5dLul5cs9fB3z+95av+vDDt9/624cLl3744cL3Fy95663XP1y5YvVyv1//sFevwtn9Tjv9jnPOGTRq8OBzCvuddloIDBahUMg7aDc33hThPiQsRteVXg4DlY5zhgvt4OBimuNMXJYtVpZMllIMD4tBIRVjZ8L1D40YcfFZppmcjKPJ0FTKzOcbi0AgQFwWwHrluV2492jZsmWE8E249lgjUUc/hmFAyRgsHPB64QyQ2YDimrrua/PMeSiIxcWydl9tFINv5MoXjYagUw85s5SUlOPKxfdH6bo1Eqrti+KNMQWr3PD7KMA/AewUpnCkk5HTpXPklN698hEW9Ox5cgHUWjeotzDOYhqsMe+sx+qSSdM10rDvMdPT1NgyRtMEnMQq5jwXaQlAmTjN5HogymZVxWl+z2BwnMswSa4LsgE4zpxar8JTLkRT10RyIiGQV5/LM9mQbB4L+ETYp+sB8NJFh7mt4LaPRNhTDZ9PD2FBCR5DZlmhiHqfT21znz0ERG7ET3bSsU2bLS9OMykk/TjI5HP8IJLdu/dY5kh7gWlaBwPvqSsuz6sfqoEYGJy7SFVVb0X7/X4SqoB6TJGOIwIYQqzeHHCQmWVhHzJxXuX6zHxmIreXJk4z8bt0ngSoLgBJp10PSNsDgvM4LdG+g32OieNp4ve8aPJ79IhgrKN75Pfw85iiuK3gsoZuEP+eVlEElW8vhzp3yiKRCP92iKt2mAIBEYQohnlRHFpZiRtZwY5LIjfUyfBXZfuC9QoYgYeES7jZdw2b9DOKi13BZTJp5cqV9TqpDylCWWTbrulKhVxFhfRlExjhke4zSGgapWyLVEOnpJkiDXmmlQRzHQqFgsRx2za9tIv9XIIUdK4oblMeDBcABDOUCCGyvbEpiLs4F7LfAcWxk7jee46nySuPchIDT5PtOt4fu6bTHKawYIyAn86/4AJx96RJwdFjx3jjJqEQl+cFJYSAYz1OOFYkwfx38/PzW/iU0UW7n4aGeDespzzDAH8UgXli7KgNKcS3W52Kpo5OEk8K++vIMutDoSw0RCQVAiiKZinUh8as9XuZB30ZoVBZlt8305HOehcrnw0HHhivcJY8G7f+rG4ljAt+7xGYys2YJgPnEhgCo8Xm1e1NxiuDtrgNJgtWM5MnoYhziP64iebynOZ6XF66DAvGjja8PKQ55AocSvTPIRPnpUmCq7yPwpIVhqHjvCxIoqyDsbOU8txYqyQTiTpI0fKjVaXcX1ZWqJttW+F4LE7p8XI+xiRdV9mBBXN0khjbrNZp2ONEk9AxiKZGZKpK7/K9DYfsi9wpznGm5s96NxQMPqRpepnEhxnOkodzJzm2DSm0wexGxmKEXpzbZkpCAhxykee2AFJVVUqTpmF/BLG6ZWYKVXDXxMBxJL1AOO6C6WAERz3iNIbkte9lNH1J7OOZ5ZqyvYDLM3ASbXkZ+OK+uB8YM1Szr7Z87969Lf6cAUXa/cAwFKZp9ZWuDPECzqyINCxddzvy2jy2NHIBJTMf/qtfXdHWxxtiXraLb0dhEN3clEtncefIOuRhID/buvUNX9B/k+M4C3B7Xi+xqm0YCwwkQRqZYcwEDrkBfs8hk21ZKAIo3UYgTUgoO5fhtCYmOJipbn9dY7yujtUZsTRyWx5zIWncNpjigcVtc5zb5jJMDBqnmRrTjQuH45zXFrHEsBTifGjv3Vu9HlZzm+rucG1WVlb6a/fXnieE0IIw/BpVaGNpjAcOenc987Qx5/DfrYLIxTWpbNaEZqcLgLWEm0tNDwfPLb/4YoPLHIZg6HRfFgwGJ2MgT8SisVJct1Tu37e/vrb2QPLA/nq7uqra3l2xW1bu3C1xcy1xWJbby7fb5du327jvMz/99NP45s2bo9u2bauDN6QKE6n4+OOPt+LStmzlqpVlK1euKF+9elXlihUr6hYvWWzCwS1RhtAXxRNx7AQWMXisCTCG5mG6kCjpusTgNmci4gJ8F/mIeg/HJcq6TfluxjuWfg0WM8ZoYoFtHzFihOfo8Cp28GvBggXdfD5/f66WwpUZh9y2RL+JRLwiN7cT/8qAs49IaYwOKaRJdwvUaY0iBUEIiZ1DbEhYtjPIn6S8QypkZPAegUmW4urm4ZMKCq7pfcrJP46EIzfE4tHbAOZkrOQHIFW/AMN/Ud9Q/4v9tft/AUfwA/UH6qfAWJiIlTkhEonchPo3wEvz77i4vQYW4jVg5jXhcAiUc01WVvaPw+FON+3ZUz0Jl7q/2b69fNHatWvqtm3dJusO1DWPRkITMFPSGQykCya5LuuXL/ZLTjPJJvAk6jWmsXxRluPcBqtxPlp89tlnfAzbAcc31B6/6TAJ1DgLI8hD6D08TgcWM/qQ2HfXK4qv0nvRxhc31HqRpL1VkLJREEkNQOqOIJ23M+kOcBR7CFQqdkk60keWlJTUrV62rAQH4vc3bvz4tb1VVS/s3rPr0R07yv/fnXdWT7vppvJpE3bcMu22CROm7dq58//u3rXrf7DXPAspfBlSNue999574/3331+wevXqxVgUKyC1qyBxqzZuLFm2fv2699etW/3avn3VT9x44/WT4KS+UtPVH5R9/tmj69d/XAYmS+wr3v6aBoBDJj6+cJgevGwCLp3HIVNjPkvuF0CyxGz5bAtB1Zf07dt/FS/YdDsdCeGegkGTGucq5AdRmnhbiMfjUcMI/Hnt2rUtfg5zuPaBUeuvHNEAKXRLhKMkWQIbCwrsWbKbo2vn7xvSh70MrVduIxfMlcXFSiMpxQiLZRtVjvgaC0quxDEHk363X7/THqirq78P8crNmzYfsjdyQ+5hQGPgmBrBk57adRzZ1EYjkAzihvUbCIx+p7Z2d4fuDrlvJoxXuC7cepY9FLxoZC2/ALFFj0W2ERpoBZLt4kuLBlCp+dmwKhA3FH2DooqoS4JsFX5KVSVXUwxLVfomKDfcXPjrE5H8U8BTTil4C0N6/tNNn9ZDPSNK3n4poUa9BL4YLCZEvScNXDqPQyYJtapi7hyH9NGe6j2wSmvqHcdaAK1gepU7+PXCG2+Eo/FUkaobecQnAJBsaqO+/kA0FPC9CQmPNmW1GRwWxEXFRbZfsVapjiznyUtsjK5QSIEbzXJFX8fn69lm619RATAgGQoFZ4Mh71fuquQ/7CT4ggl7sSdVDIj09jnppdPD5Pw0yWZplezghlp2CFJDGzZskIlY/P277777qI8Weio1WKhiDBwhzdrMA0K6MksPlCiqwoswPawjhnA0dPHqHq4Uhl/hU901gmwSsAMUeBQ01SDHVfJIBC8pXriwrX3xcE0f93z4JKs1zfiwak9VHEcdYkuVXXwS50Lu3PVAcptBZPC+AA6TRSHOUyGFEtKIJO3bV0PVe/bUCE39G1TiURk0qGekYrFx5MhCiSMX3EvExAak7qpR3db+7vNll1PTp/ixx8Jcpyl5cKA5pjn0iCA+UVQU1aUNpNw4SQDJTiqhoH8lJDX9O5SdHzm41a9LeuzYsUlVpTKc5WBFpkgVqieJ6T2OAZLtkEZYiZ5DXoMGKi/fLnE+3LJjR/myo53nq6++2g8erDHY+/xK41ohDj0gXKUsGMiaDzXtqVIPvFBeAZF3Cjmky775+REBHLy6h7zNyAhQdJGVSqwP+FTyDtJYlYYvgBWsDdlxoPbq4ySNGSM4uigYIKE+azWhx9lsZ9DAOM9YkRnSCCMCeY1GC5dhhiKDFOnCEsBeGot5A4hGY7R8xYp623H+MmzYsHad37yKGV9Dhw4txFFqGtRoPoD03vgNHzFfbUvGSfU/3qlnF/6TN+9dcsDggrihwvYobVXq/V26CF1TP2wTxOwPPqgN+31v22YybmgqQZWShFq1SBGmaly51dF6g2FttuON6gR+8ZikKTWhCThCFLLZawSPEA/BgcUpASSD5gKsg4H08llK8Y5dfaxOP8OxIhZr2NS1a95i3nO5nY4Q9q5gVVXVVWhrONdDSFgp1BBrgMXvSJyDl/mC2fPRtgdY8ezZfi2U1dvpZNRhLpJa+axfv766d58+f2qT+dyAbTW8a6WscgWqlNuSWKMuyBHqIDtojKo855xWneJc9qskRVFCmqobCMmGBjHhv+U4M7AZqCawMoHkMUtYso1lJPbCffRZWZlMJZNvElmb+H1HSVXVwbBufwxHRjeJ2xkG0FWINyhyNRFX/f4/l5aubv7p/76c7r33ROO5pqoe8cDPoLcJIg820L37+pDf+H0sWu+5QrhzWxHkKGoX3CDesjcQGE7Fxe1qi9s7EYTJGaSJPnAAhDVV87qUkD4mTrA0ugCK424TkByyauMwTfvr6mjt2rX27l27F+VG8l9AnH+GydXaS9rJJ/ce7NruDHiZBqYXENQD6ktYzUZUNfQ3Eo54Fxnec/3rr0fium+YpotNj48eXe9lHuGrXYzv9uqr8VT9/jcMVVnjKg45QpKtSoQkpKX0Vx3/pJ98aww24CP0dIJfrf5kdUSoytl5PfKCul8nb+Xj/pCkSwSpVLzQxd7+BTGwNtQu76G6hjpEtHPbdtqyafPWaEPDrzdv/uiIUoHiBz/im32/2Qesuk/XjcEAUMPFABE0mitc0nVVQsMtiiUTM8o3lezgysVz5hiWTxvpCBFNhP3tumxuF4isUs1otCzg2r/TXNtUSBIzhfARUmh+XR/eEKv7YfHGjUdyjKP0iXu6dOqS7/f7+oezwxpLnwvQ0tLVMpQAkqkRTAYPhgeZuBrbX7efPir5KLp/f+1r0eiBpR0dfdeuXYMp27oKmI3A1iwUXFxn+QPkUzRS4CNNxhNl4ezQQ/v79OczJ3uuxO6srIE+Vz+/s5/ezfxnZo7Ud7tA5AZeGT/eDCetN/y2XGTYtg3OEN/8K7pCScfxK4Zxy86qvaPHYSVx+a+apC2HhCM5fcLhMPF+x7fyEmrTAQEycrAQOU4At5EkKYizJPK+yZ6ej0s+llVVuxfk5+c9U19fX9uROY0bNy50co+Tb05ZiTuhEXJVUkjDPiQApOq4UnfcTRCA+zdt/HwFLWr8a+KKIUPykyZdmauCD+V0AAAQAElEQVQGVs4sKqppb3/tBpEbZP3sSyafhDTu0FyLsJwoGAqRHoRd4/MXmj7t7qyukdYPNXTiPtAchqrq387JjYRc7HsugPNIIUide8SB8H1hLB6jrVu3yo2fbNjiunIGvDTNh+8jVm562bVr1xCc+D+sq6+fQkLkc7brYOk4uCIDStKydgjNeMQhdS7eSRCxGhXCd7Xw+f0ileqQ1HcIRO4s20ws1aT9FrlOkrCeo6kYOWAOCJeP6rAU0cQ7V6wIc9mvip5//vkCqMTBUKVC1TSS8IxgCyIV0uACUB4Xh0wcV4WKbUpwlDpBcit3VtBnmzdX+XXfjD179qzDC4/RCNt8GEB4hq7dv3//ZNs2cc0kSSoSi8f2JF3RtXojq9PD/khkTmVlZbORtC8cHq44yqU+ld4OfqR36KK5ceTU/s/MsWNrdEu+ztIoSBIzx/OrKmhKEYbwZ/1bg5284/qFC4+xN6d9YxwxYoTmOM4oqMT83Jyc5kqsSjnhQjIdlgqAKWGtJhKN/2gCyvNr2l5eTsuXLa/8/PPPH64tq52DTBPUnsf7twKweH6Kwg8qwu0L1MiFEejiSOGyUlfdrbov8MDp14x/nq/pUM57frLknZ5JRbtJU+j1PEMsKy4usr0X7fwC59tZMqOY66TW66471+e4tgqmqFinKu4cydWIVCO4L5GaoPj1q2+fMyeUUe2ERHHvmIvroosgEVoamHTHnHabwOM8jmN7JxsWKatQnAVp+fLlcbjW/tApp9Ore2mv5/7ism2QOPXU/r0rKqomCyEmoZ8ujeXBGCx08sgttRWaroaM518pLm5eGJPmL8vV1Ox/Ez5ffddA+LXioiJouMba7f0+KhCfW7GiTiTiT+muWcIgciPSsqEyJGHfRt9qQTRm3qZ07jwIiRP6dO7cuRDejwE5kQgJVW21bwbPcSTG6xIkh3AIpy2bt9C6dWtqcE/4vE76Izt37mw+eLfaSFMm9l/Rq1evAbHY/mlZWb4bVUWJsIZSvWMMzCdhk6U6ZbbiTm1IJudkSuAIXCDUmdHvxeri48i13ykuGtxuY4YyPsz/jGQ7o8XF8rnLLisj2XCfY5lroC1sG/sOuSoprqBQMCKCRugsi7KmTpjzbn/4V2H5tLPtL1GMVWlNTc0gANMz4PODLw5piiAV5AEHxjomFhsAtJIpqq87QBs3bjSXL19WVfLxx3N3795zSzwVn7KzZiefB2UbQxEDBw7s9vzzL16Nhft7w++/DufAiK4SGTiPhgyVdM2NKrq7IKeg603bdlbO3bu3SbKLi8Wtf/+wW6+Uer3Pn31vlqq97xItoqP8HB2ITZ1p0V3Lwj4xLZmIrlIVkoYuSJEKMZBQrSLliBGpUOjx3bZ/9E/eXBNsqnbcgvLy8pDjON/ENVTzTwBtuNpY0qBiiYnV5rZt2+TatWuTy5ev2FhdvedZx7EnZWVF7j755Px5mcbG4QZaDBD69+8/cNeePVMdlWZIxe0vFUm2myIXIakkE6lYhS/oezQ7t8uUzr07r8ps64YLL+tnB7LvIz00STfUOV2Dwcfz4aPOLNORuOhI4YPLPj12Qry2ouL9cNj3kK4plYrikshoURia4fjVEamAb9p+PXYVT/7gNo5l2nGcoKqq+YZhCNxgUEN9A0EyqaKiAupyM63/+GP64INFdZtKP11Ws7fmURzgb/P5jGlXXnnlnE2bSspxBdS8Vx1uXJiD8fLLLw+xLGtGTqfwjQrZPRXFEaTYJKE6bd22G2S8RAkHpqVSvhmly0pLFr2wqHmfK166Lj+k+e5Pxcxr47FYiS/HN+uBiwbvQLvycH22lS/aKtDWe3YC9F7w9jzhpu52ySpzXegq4RL2AOwFghxDFa5hnKUFfbM2XzLyrhuXLs3HgL90v62Na9++fSxttbt27dpSWlq6Zd1H60qWLFmyCPvQ3PJt5U/s3Vtzt+PYl5/Sq+fYreVlU3fs2LF0+fLltRhPmwwcAasX6nPAs88++yAs2ldMKzlS09UQ73+kSHLJsWEzlRu6/xen9T/9+5+V7nqp6X9Q4g2Vt5SfLVwystYyX4Q2uEzT5GvdcwL3/erMMzt0nPAaO+jrmDCTmZC9Z88Cx0k+JKS1FUCSpSmUUCxyFEGJZAKhErFJnbLfNO8tHzWqL+ock74z59OtW7faQCAwE3m3RKPRm6A+b9J1/ZacnJzbTsrLm3zj9df/FgCvWLRoUR3KtAkcyvAj+K+VKysrR0Wj9TNVQ71VNUSBBGKQZFi2DjmmVYcz3gLV1aacfuqZMxfNX1GOis3t47jlj5JxdX3KfCAu7GGWYb2WrSmP57731iH/eB/qdfg5Zox8Yvz4qFmxZ44ST0wny6lSASL/SRs8TeQCSJewZoXII1/g5gOmO2P7JZeeVXyMfa3YE5O4sysFw5cy7d69ex2MiTJ4TyqxB8aLi4vbVJeZHER50RcfHDmmxGINMy3busR1ZVjBfISqkqoaZiSUw/+vqwfCnU+6OxTo9AY+vECam5k0f1luKJB9Y0yR06XinGXK2PtdcnzTcz/4Wynal80Fv0REfIm6h1R9BUDuXCZeDinq3UrcLElG42bKtshCL9g1PDANX1Y4kttldDTp/m53dfKOny9ccfS3H4eM4JhliJNh5fz1r29dj5v4P+Pc9/Ps7E79/L6gpik6HBzCVKSyVZHKE6qqfX/Xjl2Pla5bV1ZaWtq8SKA+tfuWremX7ORMjduJB00yQ1rIeCFLs+5+5JxhZccKQJ4x2MvBsaNFxUW2tTU2NyRSD4Q02qSrTV3g6KGQRhYuIA/UNQih6f0dnzF1nyPum7JkY09MqqngsRvL0bTE4zj//IsGa6r//mi04SHTtAe6UtFsW1IsmpDSUSpJKnMdRZsEq3c6/Kp8SdxCoorXrAnuMwKX7Eo0zKhL2j9BOU2o4olOPvXhJy8ac1Q/7TjSXI4L4164oShJBw4sCBup6UoyvkNYJEPBbHIsizTHJZ/QSNV1Sko719LFddV2bFblhaOuuGn+/BZ/Tn6kgR+Pd/n5+V1efPnlG3dXVj0Fxl+biJrdcN4lKYVpu6IykNXp+WTcviW7U9dJp55SMA8qu8XhnKXvrtULB1TL5AMWub92HGUU2RTVNd/MkOp7JPDWe8dkDzx47scFRO7k6bFj47PmLXy1s2bcoCST8yiZrOvk90sDBgF7eVwhiVWspVHI0tQxSZ/6nOPPfebO5etH/hgHYTYGWCq4rRNBuX1yw2SI2y0zMcORyQE4qJNPFTXScRcnY+aDnUI53x10dv+JVXu3z1u/fmUFjCObxzeiuFi7B37iO9et6L/T7/70QFL+GZ6ZnzpEvf2aWh7x+R7u5FiPPTJsWLusYDqKjziKOu2vUlws82R8cVhTp/jN5P0y2rBCl3ZcuKx9GEQmIkuVZAklN6W5V+wzo0+pWb5HUpZ6V/VlVw27d+GaLsys9nd6dCWDbrBbKpE8F7fttbom39CVxP8ISt0dMbJuuPybRb/6+OPlq17J+NeieEx137qw8BsXX3h1vaE90BCn55KWf6p0/H0NLbTDTMb/IGTqXs0Qzz9aVNTC2Dm6ER6+1vEFEf3CoWvPHjm0NN+NPX2qYUwKpqxnVWlX6Qp2FoApXduTSJZKR8Xeo4ne1fH68UrIP3W/nZq100o+tKfoijF3zlsRLi7Gxoo2j8vjC9cqwcAzlk+f6M/Pu7dHrzMe/qyi4k8bdmzY+sKiF5LpPvne7w6cdasv/fZ1NY4zM27oM2zVuFUKbag0FT+l5Cp/iu7LdpypPZYunff40KFt/kYm3fbRhscdxPTAAGayePi5q7rmd5qc7dI4vyLfEFLWqCQkfANAlDxiMH3ZQS2hyLAplIEikH1z1FFfAbP+vOuC5T/92erVIyavWph3rNVtRWlpbc22nXMrSj+fX/rh2h1Ql1FIGxUXL9Sw10XuW7im3+Rlq6/bntt11gEpF+4T9JwVCl/lqlqB4mI1Ksr6bJ9+fxaJ784qGvqn34waVYn6rHLSLDhuoThuLR+m4eIBA8zcD+YvU+3UZL+gqRrJxeSSqWK6Hpio5ypETFJRyUbcVoVhaWJU3FCn7Uwln9pu05OmJqduLRr+wxsXLBx815I1PYs/+igCpn3p+QAwDdZll58sW9iv+rLLRlZcpN+xUxozdgrruQrHnpHU/deZrtY3broimZCmaqlb/Rb9Npw07/Y1VD/x20sv+NIeGLCgQ8+XnnSHemsqDGbLJy+6aGu0YscLWYp2b9BVX1ZdpYaBVKUgJiIemgMwsV9qNiU1KRyhhYXr66vbWVcRZf1cKoFHTC3wVINlPV5Zbz64r+jya6cs+2gYnz0BRNADxHVF8eFJY4lmVf2zD1cP+OmylWP2asbt23C0cBT/kwdMe1a9oAcbXOXGlKMMs021m026oYgAhSk7mUNZ70csMTmwL/HAb4rOX8Q/X2ma4gkNmFMntMPMzuAcMJ8+f/C6F95585aIaZ0fdO3JPilXCNep1aSUqiRSXUkqKXDbCbLZu+7qRCBF+mDo+rvZqj4oqRtXJFTjjnrd/+J221xSoWvbt8Ss3Rtssbl0ycrVG5esWrJxycq3Nyxe8aZHS1a898my1cs3LVm1NuUEtu/VaO+uuPVxZcJ5syYlf20J4+b6pDVC92f10fRgSPMFha77SdcNnIrMsoBKc/Kzg1cW5mjjHr9kyGuPfvf4Gi6ZPGst/pWC2Dyg4mL5RNGwspP9xhMRzZ2Yq/mmRnTfy52MYJmWcOr9jipVm3j39MB0GExIqoT7y1Y1SsKhkFAViikumbpPJFVNWL5gWGRHetu6f5DUfcOk7h/lGoHRCEdLzT/CVvQhMEgG6nqwm88IGoYRFIYexPnVT4Y/REYgCJe2QiKlmGqKqpyUucxOxX7VJaDdmW04k7Pe+P272Brae/NPx/Pz9QCxaYbFgwfHZ51//rrN8QPPZu9LTMpJJm6L6Pp0zbbmUzIedVNxEnaKhGNDNiGmJD11y9UbUxxrJFeBwIIaU4f/lk1luDyhvUQyTvW4wtKFnlSkvTEo3adzSJlUYGi3RJK+h55aMG/BY4O/3NXR4UdzdG++ViCmp7CoqMh+5LJhtb+66Nx3uy366698yoEfFHbtXNRdFbeFHetpn20uUpz4JnITlbprRnWyTIQSRLpre6RJm5jS6XRokENNJDXXxmqw4q6wa13C7YtirfH71LmdsoxprhW91G81FOVrByY9NvLMP80cPqj06bGD4zBXZXqcX5fwawliJnPYCHqiqCj6y0H91nT54O2n80Pq5O6qe0uWE7/N5yQn69J+0LCd3xiOfMFny1cN25kHet+w5VKf7azw2XIVk2HLZT7bWWzYznyUfc1nyz9ojvu04jgPC9ueZjjuRH/CvuXkcPC2U7KDv3zxggsWP11UVIOjkZ05nq9j/GsPYibTGNBiHJ5/gf0z78MPF5cvXjxH/dx8LFWVvF+1CfZPqwAAAMtJREFUE/e6CWdiJ6HfkhPMuiHX7/v3XDXrxyEt6xqmzor/x7m68e++qHsLxa3b/Adik9yYvC/QIH4Vqyl/9rkP5i14ZtQFJb8cNKgSe52Z2e/XPf4PBWImMxnQRcXFNjvbXxlfFH0Brq3f4Yz2mwsHVT42eMCOR88duPWRYWeUPdFEj140cOuj559d/uzooRVc7umxRTW/Hz20nlUkW8lfRzWZOd8jxf9hQTzSpP63vfsXiP8EiP9vAPGfAKYjT+FfIB6ZP/8Qb/8/AAAA//+flEeCAAAABklEQVQDAINfXdswejNzAAAAAElFTkSuQmCCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+        <span class="footer-brand-name">Azra <em>Group</em></span>
+      </div>
+      <div class="brand-tag">
+        <span data-lang="tr" class="active-lang">Holding · İstanbul · Türkiye · 1999</span>
+        <span data-lang="en">Holding · Istanbul · Türkiye · 1999</span>
+      </div>
+    </div>
+    <div>
+      <h5><span data-lang="tr" class="active-lang">Merkez</span><span data-lang="en">HQ</span></h5>
+      <p data-lang="tr" class="active-lang">İstanbul · Türkiye</p>
+      <p data-lang="en">Istanbul · Türkiye</p>
+      <a href="https://azra.tr" target="_blank">azra.tr ↗</a>
+    </div>
+    <div>
+      <h5><span data-lang="tr" class="active-lang">İletişim</span><span data-lang="en">Contact</span></h5>
+      <a href="mailto:info@azra.tr">info@azra.tr</a>
+      <a href="mailto:partnerships@azra.tr">partnerships@azra.tr</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-lang="tr" class="active-lang">© 2026 Azra Group · Tüm hakları saklıdır</span>
+    <span data-lang="en">© 2026 Azra Group · All rights reserved</span>
+    <span data-lang="tr" class="active-lang">Sephora — Bayilik & Distribütörlük Sunumu</span>
+    <span data-lang="en">Sephora — Franchise & Distribution Proposal</span>
+  </div>
+</footer>
+
+<script>
+function setLang(lang, btn) {
+  document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    if (el.getAttribute('data-lang') === lang) el.classList.add('active-lang');
+    else el.classList.remove('active-lang');
+  });
+  document.documentElement.lang = lang;
+}
+
+// GANTT TASKS
+const ganttTasks = [
+  ['legal', 'Yerel JV ortaklık + tüzel kişilik', 'Local JV partnership + legal entity', 1, 2, 'Hazır ortakla kurulum', 'Setup with existing partner'],
+  ['legal', 'Marka tescili (Sanayi Bakanlığı)', 'Trademark filing', 1, 2, 'Başvuru', 'Filing'],
+  ['legal', 'Bankacılık & ödeme rayları', 'Banking & payment rails', 2, 4, 'TR–IR koridor', 'TR–IR corridor'],
+
+  ['product', 'İran FDA dosyaları (~150 SKU)', 'Iran FDA dossiers (~150 SKUs)', 3, 8, 'Sağlık tescili — pilot', 'Health reg. — pilot'],
+  ['product', 'Farsça etiket & ambalaj', 'Farsi labeling', 4, 7, 'Yerelleştirme', 'Localization'],
+  ['product', 'Bonded antrepo (Tahran)', 'Bonded warehouse (Tehran)', 5, 8, 'Lojistik hub', 'Logistics hub'],
+  ['product', 'İlk konteyner sevkiyat', 'First container shipment', 8, 9, 'Açılış stoku', 'Opening stock'],
+  ['product', 'SKU genişleme (150 → 400)', 'SKU expansion (150 → 400)', 12, 21, '2. dalga tescil', 'Wave 2 reg.'],
+
+  ['retail', 'Tahran lokasyon tarama', 'Tehran site scouting', 2, 4, 'Tarama', 'Scout'],
+  ['retail', 'Tahran Flagship buildout', 'Tehran Flagship buildout', 5, 9, 'Sam Center / Tiraje Mall', 'Sam Center / Tiraje'],
+  ['retail', 'Tahran #2', 'Tehran #2', 10, 12, 'Palladium / Kourosh', 'Palladium / Kourosh'],
+  ['retail', 'Tahran #3 + İsfahan + Şiraz', 'Tehran #3 + Isfahan + Shiraz', 13, 16, '3 yeni mağaza', '3 new stores'],
+  ['retail', 'Meşhed + Tebriz + Karaj', 'Mashhad + Tabriz + Karaj', 16, 19, 'Tier-2 yayılım', 'Tier-2 expansion'],
+  ['retail', 'Tahran #4–5 + Ahvaz', 'Tehran #4–5 + Ahvaz', 20, 24, 'Y2 finalize · 12 mağaza', 'Y2 finalize · 12 stores'],
+
+  ['digital', 'Sephora.ir e-ticaret', 'Sephora.ir e-commerce', 6, 11, 'Geliştirme + entegrasyon', 'Build + integrate'],
+  ['digital', 'Beauty Insider yerel', 'Beauty Insider local', 8, 12, 'Sadakat programı', 'Loyalty program'],
+  ['digital', 'Mobil uygulama', 'Mobile app', 12, 16, 'iOS + Android', 'iOS + Android'],
+
+  ['team', 'Üst yönetim işe alımı', 'Senior leadership hiring', 1, 4, 'CEO + 7 direktör', 'CEO + 7 directors'],
+  ['team', 'BA + MUA havuzu', 'BA + MUA pool', 6, 10, 'İstanbul Sephora Akademisi', 'Istanbul Sephora Academy'],
+  ['team', 'Tier-2 personel', 'Tier-2 staffing', 13, 18, 'Şehirlere yayılım', 'City rollout'],
+  ['team', 'Sürekli eğitim', 'Continuous training', 7, 24, 'Akademi her ay aktif', 'Academy active monthly'],
+
+  ['mkt', 'PR teaser + ön kayıt', 'PR teaser + pre-registration', 7, 9, '"Coming to Iran"', '"Coming to Iran"'],
+  ['mkt', 'Flagship lansman', 'Flagship launch', 9, 10, 'Ünlü + KOL gala', 'Celebrity + KOL gala'],
+  ['mkt', 'Always-on dijital', 'Always-on digital', 9, 24, 'Aylık aktivasyon', 'Monthly activation'],
+  ['mkt', 'Mevsimsel · Nevruz', 'Seasonal · Nowruz', 13, 15, 'Nevruz Y1', 'Nowruz Y1'],
+  ['mkt', 'Mevsimsel · Yalda + Nevruz Y2', 'Seasonal · Yalda + Nowruz Y2', 21, 23, 'Yalda + Nevruz Y2', 'Yalda + Nowruz Y2'],
+];
+
+const catColors = {
+  legal: 'var(--rouge)', product: 'var(--accent)', retail: 'var(--accent-warm)',
+  digital: '#6b8caf', team: '#5a7050', mkt: '#9a4870'
+};
+
+function buildGantt() {
+  const body = document.getElementById('ganttBody');
+  ganttTasks.forEach(t => {
+    const [cat, taskTR, taskEN, start, end, barTR, barEN] = t;
+    const row = document.createElement('div');
+    row.className = 'gantt-row';
+
+    const taskCell = document.createElement('div');
+    taskCell.className = 'task-cell';
+    taskCell.innerHTML = `
+      <span class="cat" style="background:${catColors[cat]}"></span>
+      <span data-lang="tr" class="active-lang">${taskTR}</span>
+      <span data-lang="en">${taskEN}</span>
+    `;
+    row.appendChild(taskCell);
+
+    for (let m = 1; m <= 24; m++) {
+      const cell = document.createElement('div');
+      cell.className = 'bar-cell' + ((m % 3 === 0) ? ' q-mark' : '');
+      row.appendChild(cell);
+    }
+
+    const bar = document.createElement('div');
+    bar.className = 'bar ' + cat;
+    bar.style.gridColumn = `${start + 1} / ${end + 2}`;
+    bar.innerHTML = `<span data-lang="tr" class="active-lang">${barTR}</span><span data-lang="en">${barEN}</span>`;
+    row.appendChild(bar);
+
+    body.appendChild(row);
+  });
+}
+
+function buildMilestones() {
+  const ms = document.getElementById('msRow');
+  const milestones = {
+    3: { tr: 'M3 · Yasal', en: 'M3 · Legal' },
+    9: { tr: 'M9 · Flagship', en: 'M9 · Flagship' },
+    12: { tr: 'Y1 · 2 mağaza', en: 'Y1 · 2 stores' },
+    18: { tr: 'M18 · 7 mağaza', en: 'M18 · 7 stores' },
+    24: { tr: 'Y2 · 12 mağaza', en: 'Y2 · 12 stores' },
+  };
+  for (let m = 1; m <= 24; m++) {
+    const cell = document.createElement('div');
+    cell.className = 'ms-cell';
+    if (milestones[m]) {
+      cell.innerHTML = `
+        <div class="milestone"></div>
+        <div class="milestone-label">
+          <span data-lang="tr" class="active-lang">${milestones[m].tr}</span>
+          <span data-lang="en">${milestones[m].en}</span>
+        </div>
+      `;
+    }
+    ms.appendChild(cell);
+  }
+}
+
+buildGantt();
+buildMilestones();
+
+// Hero parallax
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  const glow1 = document.querySelector('.glow1');
+  const glow2 = document.querySelector('.glow2');
+  if (glow1) glow1.style.transform = `translate(${y * 0.05}px, ${y * 0.1}px)`;
+  if (glow2) glow2.style.transform = `translate(${-y * 0.04}px, ${-y * 0.08}px)`;
+});
+
+document.querySelectorAll('.nav-menu a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('navMenu').classList.remove('open');
+    document.getElementById('menuToggle').classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+
+function toggleMenu(btn) {
+  const menu = document.getElementById('navMenu');
+  const isOpen = menu.classList.toggle('open');
+  btn.classList.toggle('active', isOpen);
+  // Lock body scroll while menu open on mobile
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+// Close menu on resize to desktop
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    if (window.innerWidth > 1099) {
+      document.getElementById('navMenu').classList.remove('open');
+      document.getElementById('menuToggle').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }, 100);
+});
+
+// Close menu on escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.getElementById('navMenu').classList.remove('open');
+    document.getElementById('menuToggle').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+</script>
+
+</body>
+</html>
